@@ -1,0 +1,5 @@
+.docker
+*.swp
+*~
+scratch/minimal/minimal
+debian/nz/Dockerfile
