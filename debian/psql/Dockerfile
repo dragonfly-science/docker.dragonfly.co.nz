@@ -9,6 +9,6 @@ RUN apt-get update && \
         postgresql-client && \
     apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
-ENTRYPOINT ["/usr/bin/psql"]
+CMD ["/usr/bin/psql"]
 ENV PAGER less
 ENV LESS -iMSx4 -FX

@@ -20,7 +20,7 @@ RUN curl -SL "https://www.python.org/ftp/python/$PYTHON_VERSION/Python-$PYTHON_V
 # skip "test_shutil" thanks to "PermissionError: [Errno 1] Operation not permitted" trying to set xattrs
 RUN ./configure \
 	&& make -j$(nproc) \
-	&& make -j$(nproc) EXTRATESTOPTS='--exclude test_shutil' test \
+	&& make -j$(nproc) EXTRATESTOPTS='--exclude test_shutil test_socket' test \
 	&& make install \
 	&& make clean \
     && pip3 install ipython
