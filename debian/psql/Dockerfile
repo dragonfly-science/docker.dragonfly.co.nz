@@ -1,14 +1,5 @@
-FROM docker.dragonfly.co.nz/debian/nz
+FROM docker.dragonfly.co.nz/debian/pg-client
 MAINTAINER chris@dragonfly.co.nz
 
-RUN apt-get update && \
-    apt-get upgrade -y && \
-    apt-get install -y --no-install-recommends \
-        vim-tiny \
-        less \
-        postgresql-client && \
-    apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
+ENTRYPOINT ["/usr/bin/psql"]
 
-CMD ["/usr/bin/psql"]
-ENV PAGER less
-ENV LESS -iMSx4 -FX

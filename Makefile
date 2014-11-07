@@ -11,6 +11,7 @@ DOCKERS := \
 	debian/ghc-7.8 \
 	debian/hakyll \
 	debian/r-base \
+	debian/pg-client \
 	debian/psql \
 	ubuntu/haskell-platform \
 	ubuntu/ghc-hvrppa \
@@ -34,7 +35,8 @@ debian/nz/.docker: debian/nz/Dockerfile debian/.docker
 debian/devpack/.docker: debian/nz/.docker
 debian/memcached/.docker: debian/nz/.docker
 debian/r-base/.docker: debian/nz/.docker
-debian/psql/.docker: debian/nz/.docker
+debian/pg-client/.docker: debian/nz/.docker
+debian/psql/.docker: debian/pg-client/.docker
 debian/python2/.docker: debian/devpack/.docker
 debian/python3/.docker: debian/devpack/.docker
 debian/ghc-7.8/.docker: debian/nz/.docker
