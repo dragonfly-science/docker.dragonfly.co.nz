@@ -13,6 +13,7 @@ DOCKERS := \
 	debian/r-base \
 	debian/pg-client \
 	debian/psql \
+	debian/ambassador \
 	ubuntu/haskell-platform \
 	ubuntu/ghc-hvrppa \
 	ubuntu/cabal-install \
@@ -41,6 +42,7 @@ debian/python2/.docker: debian/devpack/.docker
 debian/python3/.docker: debian/devpack/.docker
 debian/ghc-7.8/.docker: debian/nz/.docker
 debian/hakyll/.docker: debian/ghc-7.8/.docker
+debian/ambassador/.docker: debian/nz/.docker
 
 jessie/nz/.docker: jessie/nz/Dockerfile jessie/.docker
 jessie/hakyll/.docker: jessie/nz/.docker
