@@ -9,7 +9,6 @@ DOCKERS := \
 	debian/python3 \
 	debian/memcached \
 	debian/ghc-7.8 \
-	debian/hakyll \
 	debian/r-base \
 	debian/pg-client \
 	debian/psql \
@@ -41,11 +40,9 @@ debian/psql/.docker: debian/pg-client/.docker
 debian/python2/.docker: debian/devpack/.docker
 debian/python3/.docker: debian/devpack/.docker
 debian/ghc-7.8/.docker: debian/nz/.docker
-debian/hakyll/.docker: debian/ghc-7.8/.docker
 debian/ambassador/.docker: debian/nz/.docker
 
 jessie/nz/.docker: jessie/nz/Dockerfile jessie/.docker
-jessie/hakyll/.docker: jessie/nz/.docker
 
 postgres/nz/.docker: postgres/.docker
 postgres/postgis/.docker: postgres/nz/.docker
