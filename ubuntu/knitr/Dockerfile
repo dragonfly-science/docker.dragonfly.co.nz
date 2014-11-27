@@ -12,6 +12,3 @@ RUN apt-get update && \
         libpq-dev \
         curl && \
     apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
-
-COPY useful_r.r /tmp/
-RUN Rscript /tmp/useful_r.r
