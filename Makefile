@@ -53,7 +53,7 @@ postgres/postgis-plr/.docker: postgres/postgis/.docker
 ubuntu/nz/.docker: ubuntu/nz/Dockerfile ubuntu/.docker
 ubuntu/devpack/.docker: ubuntu/nz/.docker
 ubuntu/texlive/.docker: ubuntu/nz/.docker
-ubuntu/knitr/.docker: ubuntu/texlive/.docker
+ubuntu/knitr/.docker: ubuntu/texlive/.docker ubuntu/knitr/useful_r.r
 ubuntu/ghc-hvrppa/.docker: ubuntu/nz/.docker
 ubuntu/cabal-install/.docker: ubuntu/ghc-hvrppa/.docker
 ubuntu/elm/.docker: ubuntu/cabal-install/.docker
