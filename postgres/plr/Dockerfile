@@ -5,7 +5,6 @@ RUN echo "deb http://cran.stat.auckland.ac.nz/bin/linux/debian wheezy-cran3/" > 
 RUN apt-key adv --keyserver keys.gnupg.net --recv-key 381BA480
 
 RUN apt-get update && \
-    apt-get upgrade -y && \
     apt-get install -y --no-install-recommends postgresql-9.3-plr && \
     apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 

@@ -13,7 +13,6 @@ ENV LANG en_NZ.utf8
 ENV LANGUAGE en_NZ:en
 
 RUN apt-get update && \
-    apt-get upgrade -y && \
     apt-get install -y make unzip wget postgresql-server-dev-9.3 patch && \
 
     wget http://api.pgxn.org/dist/pgtap/0.94.0/pgtap-0.94.0.zip && \

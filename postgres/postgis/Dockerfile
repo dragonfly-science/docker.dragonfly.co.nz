@@ -2,7 +2,6 @@ FROM docker.dragonfly.co.nz/postgres/nz
 MAINTAINER chris@dragonfly.co.nz
 
 RUN apt-get update && \
-    apt-get upgrade -y && \
     apt-get install -y libjson0 libgeos-3.3.3 libgeos-c1 libproj0 proj-bin proj-data && \
     apt-get install -y wget postgresql-server-dev-9.3 libjson0-dev libgeos-dev libxml2-dev build-essential libproj-dev && \
 
