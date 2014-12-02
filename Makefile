@@ -12,6 +12,7 @@ DOCKERS := \
 	debian/pg-client \
 	debian/psql \
 	debian/ambassador \
+	debian/rsync \
 	ubuntu/haskell-platform \
 	ubuntu/ghc-hvrppa \
 	ubuntu/cabal-install \
@@ -57,6 +58,7 @@ debian/python2/.docker: debian/devpack/.docker
 debian/python3/.docker: debian/devpack/.docker
 debian/ghc-7.8/.docker: debian/nz/.docker
 debian/ambassador/.docker: debian/nz/.docker
+debian/rsync/.docker: debian/nz/.docker
 
 jessie/nz/.docker: jessie/nz/Dockerfile jessie/.official
 
@@ -111,7 +113,7 @@ node/.official:
 	docker pull node
 	$(call fetchofficial,node,$@)
 
-%/.docker: %/Dockerfile
+%/.docker: %/Dockerfile %/*.sh
 	docker build -t $(REGISTRY)/$* $*
 	@$(shell docker inspect --format='{{.Id}}' $(REGISTRY)/$*  > $@)
 
