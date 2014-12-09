@@ -48,7 +48,7 @@ push: $(REGISTRY_DOCKERS)
 .PHONY: deploy
 deploy: fetch all push
 
-debian/nz/.docker: debian/nz/Dockerfile debian/.official
+debian/nz/.docker: debian/.official
 debian/devpack/.docker: debian/nz/.docker
 debian/memcached/.docker: debian/nz/.docker
 debian/r-base/.docker: debian/nz/.docker
@@ -60,14 +60,14 @@ debian/ghc-7.8/.docker: debian/nz/.docker
 debian/ambassador/.docker: debian/nz/.docker
 debian/rsync/.docker: debian/nz/.docker
 
-jessie/nz/.docker: jessie/nz/Dockerfile jessie/.official
+jessie/nz/.docker: jessie/.official
 
 postgres/nz/.docker: postgres/.official
 postgres/postgis/.docker: postgres/nz/.docker
 postgres/plr/.docker: postgres/nz/.docker
 postgres/postgis-plr/.docker: postgres/postgis/.docker
 
-ubuntu/nz/.docker: ubuntu/nz/Dockerfile ubuntu/.official
+ubuntu/nz/.docker: ubuntu/.official
 ubuntu/devpack/.docker: ubuntu/nz/.docker
 ubuntu/texlive/.docker: ubuntu/nz/.docker
 ubuntu/knitr/.docker: ubuntu/texlive/.docker
@@ -76,10 +76,10 @@ ubuntu/cabal-install/.docker: ubuntu/ghc-hvrppa/.docker
 ubuntu/elm/.docker: ubuntu/cabal-install/.docker
 ubuntu/haskell-platform/.docker: ubuntu/devpack/.docker
 
-ruby/nz/.docker: ruby/nz/Dockerfile ruby/.official
+ruby/nz/.docker: ruby/.official
 ruby/bourbon/.docker: ruby/nz/.docker
 
-node/nz/.docker: node/nz/Dockerfile node/.official
+node/nz/.docker: node/.official
 
 fetchofficial = @$(if $(filter-out $(shell cat $@ 2>/dev/null), $(shell docker inspect --format='{{.Id}}' $(1))), docker inspect --format='{{.Id}}' $(1)  > $(2))
 
@@ -113,7 +113,7 @@ node/.official:
 	docker pull node
 	$(call fetchofficial,node,$@)
 
-%/.docker: %/Dockerfile %/*.sh
+%/.docker: %/Dockerfile %/*
 	docker build -t $(REGISTRY)/$* $*
 	@$(shell docker inspect --format='{{.Id}}' $(REGISTRY)/$*  > $@)
 
