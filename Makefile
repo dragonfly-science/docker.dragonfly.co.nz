@@ -18,7 +18,7 @@ DOCKERS := \
 	ubuntu/cabal-install \
 	ubuntu/elm \
 	ubuntu/texlive \
-	ubuntu/knitr \
+	ubuntu/texlive-r \
 	ruby/bourbon \
 	node/nz \
 	jessie/nz
@@ -70,7 +70,7 @@ postgres/postgis-plr/.docker: postgres/postgis/.docker
 ubuntu/nz/.docker: ubuntu/nz/Dockerfile ubuntu/.official
 ubuntu/devpack/.docker: ubuntu/nz/.docker
 ubuntu/texlive/.docker: ubuntu/nz/.docker
-ubuntu/knitr/.docker: ubuntu/texlive/.docker
+ubuntu/texlive-r/.docker: ubuntu/texlive/.docker
 ubuntu/ghc-hvrppa/.docker: ubuntu/nz/.docker
 ubuntu/cabal-install/.docker: ubuntu/ghc-hvrppa/.docker
 ubuntu/elm/.docker: ubuntu/cabal-install/.docker
