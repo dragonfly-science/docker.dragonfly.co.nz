@@ -2,7 +2,6 @@
 REGISTRY := docker.dragonfly.co.nz
 DOCKERS := \
 	postgres/postgis\
-	postgres/plr \
 	postgres/postgis-plr \
 	debian/python2 \
 	debian/python3 \
