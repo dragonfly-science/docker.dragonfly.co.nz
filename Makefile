@@ -63,7 +63,6 @@ jessie/nz/.docker: jessie/.official
 
 postgres/nz/.docker: postgres/.official
 postgres/postgis/.docker: postgres/nz/.docker
-postgres/plr/.docker: postgres/nz/.docker
 postgres/postgis-plr/.docker: postgres/postgis/.docker
 
 ubuntu/nz/.docker: ubuntu/.official

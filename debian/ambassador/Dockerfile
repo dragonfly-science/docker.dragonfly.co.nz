@@ -3,6 +3,6 @@ MAINTAINER chris@dragonfly.co.nz
 
 RUN apt-get update && \
     apt-get install -y --no-install-recommends \
-        socat && \
+        socat netcat && \
     apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
