@@ -7,7 +7,6 @@ DOCKERS := \
 	debian/python3 \
 	debian/memcached \
 	debian/ghc-7.8 \
-	# debian/r-base \
 	debian/pg-client \
 	debian/psql \
 	debian/ambassador \
@@ -21,6 +20,7 @@ DOCKERS := \
 	ruby/bourbon \
 	node/nz \
 	jessie/nz
+	# debian/r-base \
 
 BASEIMAGES := \
 	ubuntu \
