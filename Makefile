@@ -118,8 +118,8 @@ node/.official:
 	$(call fetchofficial,node,$@)
 
 python2/.official:
-	docker pull python:2
-	$(call fetchofficial,python:2,$@)
+	docker pull python:2.7
+	$(call fetchofficial,python:2.7,$@)
 
 %/.docker: %/Dockerfile %/*
 	docker build -t $(REGISTRY)/$* $*
