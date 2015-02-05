@@ -19,7 +19,9 @@ DOCKERS := \
 	ubuntu/texlive-r \
 	ruby/bourbon \
 	node/nz \
-	jessie/nz
+	jessie/nz \
+	python2/django \
+	python2/nz
 	# debian/r-base \
 
 BASEIMAGES := \
@@ -28,7 +30,8 @@ BASEIMAGES := \
 	jessie \
 	postgres \
 	ruby \
-	node
+	node \
+	python2
 
 DOCKER_TARGETS := $(addsuffix /.docker,$(DOCKERS))
 REGISTRY_DOCKERS := $(addprefix $(REGISTRY)/,$(DOCKERS))
@@ -79,6 +82,9 @@ ruby/bourbon/.docker: ruby/nz/.docker
 
 node/nz/.docker: node/.official
 
+python2/nz/.docker: python2/.official
+python2/django/.docker: python2/nz/.docker
+
 fetchofficial = @$(if $(filter-out $(shell cat $@ 2>/dev/null), $(shell docker inspect --format='{{.Id}}' $(1))), docker inspect --format='{{.Id}}' $(1)  > $(2))
 
 
@@ -110,6 +116,10 @@ ruby/.official:
 node/.official:
 	docker pull node
 	$(call fetchofficial,node,$@)
+
+python2/.official:
+	docker pull python:2
+	$(call fetchofficial,python:2,$@)
 
 %/.docker: %/Dockerfile %/*
 	docker build -t $(REGISTRY)/$* $*
