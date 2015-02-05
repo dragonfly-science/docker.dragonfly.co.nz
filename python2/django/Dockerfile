@@ -1,4 +1,4 @@
-FROM docker.dragonfly.co.nz/python2
+FROM docker.dragonfly.co.nz/python2/nz
 
 RUN mkdir -p /var/www/src/app
 WORKDIR /var/www/src/app
