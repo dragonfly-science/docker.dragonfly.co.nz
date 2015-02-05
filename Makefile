@@ -21,6 +21,7 @@ DOCKERS := \
 	node/nz \
 	jessie/nz \
 	python2/django \
+	python2/geodjango \
 	python2/nz
 	# debian/r-base \
 
@@ -84,6 +85,7 @@ node/nz/.docker: node/.official
 
 python2/nz/.docker: python2/.official
 python2/django/.docker: python2/nz/.docker
+python2/geodjango/.docker: python2/nz/.docker
 
 fetchofficial = @$(if $(filter-out $(shell cat $@ 2>/dev/null), $(shell docker inspect --format='{{.Id}}' $(1))), docker inspect --format='{{.Id}}' $(1)  > $(2))
 
