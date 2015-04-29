@@ -4,7 +4,6 @@ DOCKERS := \
 	debian/python2 \
 	debian/python3 \
 	debian/memcached \
-	debian/ghc-7.8 \
 	debian/pg-client \
 	debian/psql \
 	debian/ambassador \
@@ -57,7 +56,6 @@ debian/pg-client/.docker: debian/nz/.docker
 debian/psql/.docker: debian/pg-client/.docker
 debian/python2/.docker: debian/devpack/.docker
 debian/python3/.docker: debian/devpack/.docker
-debian/ghc-7.8/.docker: debian/nz/.docker
 debian/ambassador/.docker: debian/nz/.docker
 debian/rsync/.docker: debian/nz/.docker
 
