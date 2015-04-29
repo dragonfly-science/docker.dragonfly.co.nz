@@ -1,8 +1,6 @@
 
 REGISTRY := docker.dragonfly.co.nz
 DOCKERS := \
-	postgres/postgis\
-	postgres/postgis-plr \
 	debian/python2 \
 	debian/python3 \
 	debian/memcached \
@@ -30,7 +28,6 @@ BASEIMAGES := \
 	ubuntu \
 	debian \
 	jessie \
-	postgres \
 	ruby \
 	node \
 	python2
@@ -66,9 +63,6 @@ debian/rsync/.docker: debian/nz/.docker
 
 jessie/nz/.docker: jessie/.official
 
-postgres/nz/.docker: postgres/.official
-postgres/postgis/.docker: postgres/nz/.docker
-postgres/postgis-plr/.docker: postgres/postgis/.docker
 
 ubuntu/nz/.docker: ubuntu/.official
 ubuntu/devpack/.docker: ubuntu/nz/.docker
@@ -108,10 +102,6 @@ debian/.official:
 jessie/.official:
 	docker pull debian:jessie
 	$(call fetchofficial,debian:jessie,$@)
-
-postgres/.official:
-	docker pull postgres:9.3
-	$(call fetchofficial,postgres:9.3,$@)
 
 ruby/.official:
 	docker pull ruby
