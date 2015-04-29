@@ -17,6 +17,7 @@ DOCKERS := \
 	ubuntu/elm \
 	ubuntu/texlive \
 	ubuntu/texlive-r \
+	ubuntu/gis-r \
 	ruby/bourbon \
 	node/nz \
 	jessie/nz \
@@ -73,6 +74,7 @@ ubuntu/nz/.docker: ubuntu/.official
 ubuntu/devpack/.docker: ubuntu/nz/.docker
 ubuntu/texlive/.docker: ubuntu/nz/.docker
 ubuntu/texlive-r/.docker: ubuntu/texlive/.docker
+ubuntu/gis-r/.docker: ubuntu/texlive/.docker
 ubuntu/ghc-hvrppa/.docker: ubuntu/nz/.docker
 ubuntu/cabal-install/.docker: ubuntu/ghc-hvrppa/.docker
 ubuntu/elm/.docker: ubuntu/cabal-install/.docker
