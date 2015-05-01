@@ -8,7 +8,6 @@ DOCKERS := \
 	debian/psql \
 	debian/ambassador \
 	debian/rsync \
-	ubuntu/haskell-platform \
 	ubuntu/ghc-hvrppa \
 	ubuntu/cabal-install \
 	ubuntu/elm \
@@ -70,7 +69,6 @@ ubuntu/gis-r/.docker: ubuntu/texlive/.docker
 ubuntu/ghc-hvrppa/.docker: ubuntu/nz/.docker
 ubuntu/cabal-install/.docker: ubuntu/ghc-hvrppa/.docker
 ubuntu/elm/.docker: ubuntu/cabal-install/.docker
-ubuntu/haskell-platform/.docker: ubuntu/devpack/.docker
 
 ruby/nz/.docker: ruby/.official
 ruby/bourbon/.docker: ruby/nz/.docker
