@@ -1,14 +1,9 @@
-FROM debian:wheezy
+FROM debian:jessie
 MAINTAINER chris@dragonfly.co.nz
 
 RUN sed -i 's/http.debian.net/ftp.nz.debian.org/' /etc/apt/sources.list
 
 RUN apt-key adv --keyserver pgp.mit.edu --recv-keys B97B0AFCAA1A47F044F244A07FCC7D46ACCC4CF8
-
-ENV PG_MAJOR 9.3
-ENV PG_VERSION 9.3.5-1.pgdg70+1
-
-RUN echo 'deb http://apt.postgresql.org/pub/repos/apt/ wheezy-pgdg main' $PG_MAJOR > /etc/apt/sources.list.d/pgdg.list
 
 ENV DEBIAN_FRONTEND noninteractive
 RUN echo "Pacific/Auckland" > /etc/timezone
@@ -19,4 +14,3 @@ RUN apt-get update && \
 ENV LANG en_NZ.utf8
 ENV LANGUAGE en_NZ:en
 
-__INCLUDE_DF_USER__
