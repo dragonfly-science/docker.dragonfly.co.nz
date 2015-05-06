@@ -2,7 +2,6 @@
 REGISTRY := docker.dragonfly.co.nz
 DOCKERS := \
 	debian/python2 \
-	debian/python3 \
 	debian/memcached \
 	debian/pg-client \
 	debian/psql \
@@ -21,6 +20,7 @@ DOCKERS := \
 	python2/geodjango \
 	python2/nz
 	# debian/r-base \
+	# debian/python3 \
 
 BASEIMAGES := \
 	ubuntu \
