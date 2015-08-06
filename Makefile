@@ -10,6 +10,7 @@ DOCKERS := \
 	ubuntu/ghc-hvrppa \
 	ubuntu/cabal-install \
 	ubuntu/elm \
+	ubuntu/gorbachev-base \
 	ubuntu/texlive \
 	ubuntu/texlive-r \
 	ubuntu/gis-r \
@@ -65,6 +66,7 @@ ubuntu/nz/.docker: ubuntu/.official
 ubuntu/devpack/.docker: ubuntu/nz/.docker
 ubuntu/texlive/.docker: ubuntu/nz/.docker
 ubuntu/texlive-r/.docker: ubuntu/texlive/.docker
+ubuntu/gorbachev-base/.docker: ubuntu/texlive-r/.docker
 ubuntu/gis-r/.docker: ubuntu/texlive/.docker
 ubuntu/ghc-hvrppa/.docker: ubuntu/nz/.docker
 ubuntu/cabal-install/.docker: ubuntu/ghc-hvrppa/.docker
