@@ -8,7 +8,6 @@ DOCKERS := \
 	debian/rsync \
 	ubuntu/ghc-hvrppa \
 	ubuntu/cabal-install \
-	ubuntu/elm \
 	ubuntu/gorbachev-base \
 	ubuntu/texlive \
 	ubuntu/texlive-r \
