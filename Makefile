@@ -1,7 +1,6 @@
 
 REGISTRY := docker.dragonfly.co.nz
 DOCKERS := \
-	debian/python2 \
 	debian/memcached \
 	debian/pg-client \
 	debian/psql \
