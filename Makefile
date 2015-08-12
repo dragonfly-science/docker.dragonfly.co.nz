@@ -1,7 +1,6 @@
 
 REGISTRY := docker.dragonfly.co.nz
 DOCKERS := \
-	debian/python2 \
 	debian/memcached \
 	debian/pg-client \
 	debian/psql \
@@ -9,7 +8,6 @@ DOCKERS := \
 	debian/rsync \
 	ubuntu/ghc-hvrppa \
 	ubuntu/cabal-install \
-	ubuntu/elm \
 	ubuntu/gorbachev-base \
 	ubuntu/texlive \
 	ubuntu/texlive-r \
