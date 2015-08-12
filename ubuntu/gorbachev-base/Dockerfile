@@ -10,3 +10,5 @@ RUN R --slave < /etc/kahawai-jobserver/r_requirements.r
 
 # TODO: something less fragile
 RUN groupadd -g 1003 deployhub && useradd -m -g deployhub -u 1003 deployhub
+
+RUN apt-get update && apt-get install -y awscli
