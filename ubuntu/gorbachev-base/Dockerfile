@@ -12,3 +12,8 @@ RUN R --slave < /etc/kahawai-jobserver/r_requirements.r
 RUN groupadd -g 1003 deployhub && useradd -m -g deployhub -u 1003 deployhub
 
 RUN apt-get update && apt-get install -y awscli
+
+COPY fonts/ /usr/local/share/fonts/
+
+COPY dragonfly-latex-templates_1.7_all.deb /tmp/ 
+RUN dpkg -i /tmp/dragonfly-latex-templates_1.7_all.deb
