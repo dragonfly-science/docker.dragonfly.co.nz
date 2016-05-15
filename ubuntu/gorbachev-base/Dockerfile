@@ -15,5 +15,5 @@ RUN apt-get update && apt-get install -y awscli
 
 COPY fonts/ /usr/local/share/fonts/
 
-COPY dragonfly-latex-templates_1.7_all.deb /tmp/ 
-RUN dpkg -i /tmp/dragonfly-latex-templates_1.7_all.deb
+COPY dragonfly-latex-templates_1.11_all.deb /tmp/ 
+RUN dpkg -i /tmp/dragonfly-latex-templates_1.11_all.deb
