@@ -17,7 +17,8 @@ DOCKERS := \
 	jessie/nz \
 	python2/django \
 	python2/geodjango \
-	python2/nz
+	python2/nz \
+	rocker-hadleyverse/r-analysis-reporting
 	# debian/r-base \
 	# debian/python3 \
 
@@ -27,7 +28,8 @@ BASEIMAGES := \
 	jessie \
 	ruby \
 	node \
-	python2
+	python2 \
+	rocker-hadleyverse
 
 DOCKER_TARGETS := $(addsuffix /.docker,$(DOCKERS))
 REGISTRY_DOCKERS := $(addprefix $(REGISTRY)/,$(DOCKERS))
@@ -79,6 +81,8 @@ python2/nz/.docker: python2/.official
 python2/django/.docker: python2/nz/.docker
 python2/geodjango/.docker: python2/nz/.docker
 
+rocker-hadleyverse/r-analysis-reporting/.docker: rocker-hadleyverse/.official
+
 fetchofficial = @$(if $(filter-out $(shell cat $@ 2>/dev/null), $(shell docker inspect --format='{{.Id}}' $(1))), docker inspect --format='{{.Id}}' $(1)  > $(2))
 
 
@@ -110,6 +114,11 @@ node/.official:
 python2/.official:
 	docker pull python:2.7
 	$(call fetchofficial,python:2.7,$@)
+
+rocker-hadleyverse/.official:
+	docker pull rocker/hadleyverse
+	$(call fetchofficial,rocker/hadleyverse,$@)
+
 
 %/.docker: %/Dockerfile %/*
 	docker build -t $(REGISTRY)/$* $*
