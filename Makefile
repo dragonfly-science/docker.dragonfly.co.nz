@@ -1,34 +1,18 @@
 
 REGISTRY := docker.dragonfly.co.nz
 DOCKERS := \
-	debian/memcached \
-	debian/pg-client \
-	debian/psql \
-	debian/ambassador \
-	debian/rsync \
-	ubuntu/ghc-hvrppa \
-	ubuntu/cabal-install \
 	ubuntu/gorbachev-base \
 	ubuntu/texlive \
 	ubuntu/texlive-r \
 	ubuntu/gis-r \
-	ruby/bourbon \
-	node/nz \
 	jessie/nz \
-	python2/django \
-	python2/geodjango \
-	python2/nz \
 	rocker-hadleyverse/r-analysis-reporting
 	# debian/r-base \
 	# debian/python3 \
 
 BASEIMAGES := \
 	ubuntu \
-	debian \
 	jessie \
-	ruby \
-	node \
-	python2 \
 	rocker-hadleyverse
 
 DOCKER_TARGETS := $(addsuffix /.docker,$(DOCKERS))
