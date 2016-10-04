@@ -2,6 +2,7 @@
 REGISTRY := docker.dragonfly.co.nz
 DOCKERS := \
 	ubuntu/gorbachev-base \
+	ubuntu/gorbachev-base-stack-pandoc \
 	ubuntu/texlive \
 	ubuntu/texlive-r \
 	ubuntu/gis-r \
@@ -51,6 +52,7 @@ ubuntu/devpack/.docker: ubuntu/nz/.docker
 ubuntu/texlive/.docker: ubuntu/nz/.docker
 ubuntu/texlive-r/.docker: ubuntu/texlive/.docker
 ubuntu/gorbachev-base/.docker: ubuntu/texlive-r/.docker
+ubuntu/gorbachev-base-stack-pandoc/.docker: ubuntu/gorbachev-base/.docker
 ubuntu/gis-r/.docker: ubuntu/texlive/.docker
 ubuntu/ghc-hvrppa/.docker: ubuntu/nz/.docker
 ubuntu/cabal-install/.docker: ubuntu/ghc-hvrppa/.docker
