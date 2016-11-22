@@ -16,6 +16,7 @@ RUN apt-add-repository multiverse && apt-get update
 RUN apt-get install -y msttcorefonts
 # libraries necessary to run docker
 RUN apt-get install -y libapparmor1 libsystemd-journal0 libcgmanager0 libnih-dbus1 libnih1 libdbus-1-3 libgcrypt11
+RUN apt-get install -y wget
 
 COPY fonts/ /usr/local/share/fonts/
 
