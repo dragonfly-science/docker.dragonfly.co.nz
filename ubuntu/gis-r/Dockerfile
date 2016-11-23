@@ -35,3 +35,5 @@ RUN sed -i 's/md5\|peer/trust/' /etc/postgresql/9.3/main/pg_hba.conf
 # for spgrass: install.packages("spgrass", repos="http://R-Forge.R-project.org")
 
 RUN apt-get install -y qgis
+RUN apt-get install -y wget
+
