@@ -10,9 +10,7 @@ packages <- c(
     "cplm","lme4", "rgdal", "gridSVG"
 )
 
-for (p in packages) {
-    if (!require(p, character.only=TRUE)) {
-        install.packages(p)
-    }
-}
 
+update.packages(ask=F)
+pkgs2install <- setdiff(packages, library()$results[, 'Package'])
+install.packages(pkgs2install)
