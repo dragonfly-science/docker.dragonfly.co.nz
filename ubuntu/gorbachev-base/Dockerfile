@@ -4,7 +4,7 @@ MAINTAINER richard@dragonfly.co.nz
 RUN apt-get update && apt-get install --no-install-recommends -y postgresql-client-9.3 git-core pandoc python-pygments jags
 RUN apt-get update && apt-get install -y python-swiftclient
 
-RUN apt-get install -y gdal-bin libgdal-dev libgdal1-dev libproj-dev libgeos-3.4.2 libgeos-dev proj-bin proj-data geos-dev
+RUN apt-get install -y gdal-bin libgdal-dev libgdal1-dev libproj-dev libgeos-3.4.2 libgeos-dev proj-bin proj-data
 
 
 COPY r_requirements.r /etc/kahawai-jobserver/r_requirements.r

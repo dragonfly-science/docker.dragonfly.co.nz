@@ -26,7 +26,6 @@ RUN apt-get install -y postgresql postgis
  
 # * R packages: 
 RUN apt-get install -y r-base-core r-recommended r-base libpq-dev 
-RUN apt-get install -y geos-dev
 
 COPY r_requirements.r /etc/r_requirements.r
 RUN R --slave < /etc/r_requirements.r
