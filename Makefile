@@ -3,8 +3,8 @@ REGISTRY := docker.dragonfly.co.nz
 DOCKERS := \
 	ubuntu/dragonfly-base \
 	ubuntu/texlive \
-	ubuntu/texlive-r \
-	ubuntu/gis-r 
+	ubuntu/texlive-r #\
+#	ubuntu/gis-r 
 
 BASEIMAGES := \
 	ubuntu 
@@ -40,13 +40,13 @@ clean:
 	find . -name .docker -delete
 
 ubuntu/.official:
-	docker pull ubuntu:$(TAG)
+	docker pull ubuntu:$(TAG) && touch $@
 
-%/.docker: %/Dockerfile %/*
+%/.docker: %/Dockerfile
 	docker build -t $(REGISTRY)/$*:$(TAG) $* && touch $@
-#	@$(shell docker inspect --format='{{.Id}}' $(REGISTRY)/$*  > $@)
 
-%/Dockerfile: %/Dockerfile.tmpl includes/df-user.inc includes/nz-locale.inc
+.PRECIOUS: ubuntu/nz/Dockerfile
+ubuntu/nz/Dockerfile: ubuntu/nz/Dockerfile.tmpl includes/df-user.inc includes/nz-locale.inc
 	@cp $< $@
 	@sed -i -e "/__INCLUDE_DF_USER__/r includes/df-user.inc" -e "//d" $@
 	@sed -i -e "/__INCLUDE_NZ_LOCALE__/r includes/nz-locale.inc" -e "//d" $@

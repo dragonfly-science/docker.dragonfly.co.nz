@@ -2,8 +2,9 @@ FROM docker.dragonfly.co.nz/ubuntu/nz:17.04
 MAINTAINER finlay@dragonfly.co.nz
 
 RUN echo "deb http://cran.stat.auckland.ac.nz/bin/linux/ubuntu trusty/" > /etc/apt/sources.list.d/cran.list
-RUN apt-key adv --keyserver keyserver.ubuntu.com --recv-keys E084DAB9
 RUN apt-get update
+RUN apt-get install -y dirmngr
+RUN apt-key adv --keyserver keyserver.ubuntu.com --recv-keys E084DAB9
 RUN apt-get -y install software-properties-common
 RUN add-apt-repository -y ppa:ubuntugis/ubuntugis-unstable
 RUN apt-get update
@@ -21,7 +22,7 @@ RUN apt-get install -y libgeos-3.4.2 libgeos-dev
 RUN apt-get install -y proj-bin proj-data
  
 # * Postgres and PostGIS
-RUN apt-get install -y postgresql postgis
+RUN apt-get install -y postgresql-9.6 postgresql-9.6-postgis-2.3
 # RUN createuser -s dba 
  
 # * R packages: 
@@ -30,7 +31,7 @@ RUN apt-get install -y r-base-core r-recommended r-base libpq-dev
 COPY r_requirements.r /etc/r_requirements.r
 RUN R --slave < /etc/r_requirements.r
 
-RUN sed -i 's/md5\|peer/trust/' /etc/postgresql/9.3/main/pg_hba.conf
+RUN sed -i 's/md5\|peer/trust/' /etc/postgresql/9.6/main/pg_hba.conf
 
 # for spgrass: install.packages("spgrass", repos="http://R-Forge.R-project.org")
 
