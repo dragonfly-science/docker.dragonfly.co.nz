@@ -1,4 +1,4 @@
-FROM docker.dragonfly.co.nz/ubuntu/texlive-r
+FROM docker.dragonfly.co.nz/ubuntu/texlive-r:17.04
 MAINTAINER richard@dragonfly.co.nz
 
 RUN apt-get update && apt-get install --no-install-recommends -y postgresql-client-9.3 git-core pandoc python-pygments jags

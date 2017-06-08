@@ -1,20 +1,15 @@
 
 REGISTRY := docker.dragonfly.co.nz
 DOCKERS := \
-	ubuntu/gorbachev-base \
-	ubuntu/gorbachev-base-stack-pandoc \
+	ubuntu/dragonfly-base \
 	ubuntu/texlive \
 	ubuntu/texlive-r \
-	ubuntu/gis-r \
-	jessie/nz \
-	rocker-hadleyverse/r-analysis-reporting
-	# debian/r-base \
-	# debian/python3 \
+	ubuntu/gis-r 
 
 BASEIMAGES := \
-	ubuntu \
-	jessie \
-	rocker-hadleyverse
+	ubuntu 
+
+TAG := 17.04
 
 DOCKER_TARGETS := $(addsuffix /.docker,$(DOCKERS))
 REGISTRY_DOCKERS := $(addprefix $(REGISTRY)/,$(DOCKERS))
@@ -33,44 +28,11 @@ push: $(REGISTRY_DOCKERS)
 .PHONY: deploy
 deploy: fetch all push
 
-debian/nz/.docker: debian/.official
-debian/devpack/.docker: debian/nz/.docker
-debian/memcached/.docker: debian/nz/.docker
-debian/r-base/.docker: debian/nz/.docker
-debian/pg-client/.docker: debian/nz/.docker
-debian/psql/.docker: debian/pg-client/.docker
-debian/python2/.docker: debian/devpack/.docker
-debian/python3/.docker: debian/devpack/.docker
-debian/ambassador/.docker: debian/nz/.docker
-debian/rsync/.docker: debian/nz/.docker
-
-jessie/nz/.docker: jessie/.official
-
-
 ubuntu/nz/.docker: ubuntu/.official
-ubuntu/devpack/.docker: ubuntu/nz/.docker
 ubuntu/texlive/.docker: ubuntu/nz/.docker
 ubuntu/texlive-r/.docker: ubuntu/texlive/.docker
-ubuntu/gorbachev-base/.docker: ubuntu/texlive-r/.docker
-ubuntu/gorbachev-base-stack-pandoc/.docker: ubuntu/gorbachev-base/.docker
+ubuntu/dragonfly-base/.docker: ubuntu/texlive-r/.docker
 ubuntu/gis-r/.docker: ubuntu/texlive/.docker
-ubuntu/ghc-hvrppa/.docker: ubuntu/nz/.docker
-ubuntu/cabal-install/.docker: ubuntu/ghc-hvrppa/.docker
-ubuntu/elm/.docker: ubuntu/cabal-install/.docker
-
-ruby/nz/.docker: ruby/.official
-ruby/bourbon/.docker: ruby/nz/.docker
-
-node/nz/.docker: node/.official
-
-python2/nz/.docker: python2/.official
-python2/django/.docker: python2/nz/.docker
-python2/geodjango/.docker: python2/nz/.docker
-
-rocker-hadleyverse/r-analysis-reporting/.docker: rocker-hadleyverse/.official
-
-fetchofficial = @$(if $(filter-out $(shell cat $@ 2>/dev/null), $(shell docker inspect --format='{{.Id}}' $(1))), docker inspect --format='{{.Id}}' $(1)  > $(2))
-
 
 .PHONY: clean
 clean:
@@ -78,37 +40,11 @@ clean:
 	find . -name .docker -delete
 
 ubuntu/.official:
-	docker pull ubuntu:14.04
-	$(call fetchofficial,ubuntu:14.04,$@)
-
-debian/.official:
-	docker pull debian:wheezy
-	$(call fetchofficial,debian:wheezy,$@)
-
-jessie/.official:
-	docker pull debian:jessie
-	$(call fetchofficial,debian:jessie,$@)
-
-ruby/.official:
-	docker pull ruby
-	$(call fetchofficial,ruby,$@)
-
-node/.official:
-	docker pull node
-	$(call fetchofficial,node,$@)
-
-python2/.official:
-	docker pull python:2.7
-	$(call fetchofficial,python:2.7,$@)
-
-rocker-hadleyverse/.official:
-	docker pull rocker/hadleyverse
-	$(call fetchofficial,rocker/hadleyverse,$@)
-
+	docker pull ubuntu:$(TAG)
 
 %/.docker: %/Dockerfile %/*
-	docker build -t $(REGISTRY)/$* $*
-	@$(shell docker inspect --format='{{.Id}}' $(REGISTRY)/$*  > $@)
+	docker build -t $(REGISTRY)/$*:$(TAG) $* && touch $@
+#	@$(shell docker inspect --format='{{.Id}}' $(REGISTRY)/$*  > $@)
 
 %/Dockerfile: %/Dockerfile.tmpl includes/df-user.inc includes/nz-locale.inc
 	@cp $< $@

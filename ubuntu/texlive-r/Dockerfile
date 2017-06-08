@@ -1,7 +1,7 @@
-FROM docker.dragonfly.co.nz/ubuntu/texlive
-MAINTAINER chris@dragonfly.co.nz
+FROM docker.dragonfly.co.nz/ubuntu/texlive:17.04
+MAINTAINER edward@dragonfly.co.nz
 
-RUN echo "deb http://cran.stat.auckland.ac.nz/bin/linux/ubuntu trusty/" > /etc/apt/sources.list.d/cran.list
+RUN echo "deb http://cran.stat.auckland.ac.nz/bin/linux/ubuntu zesty/" > /etc/apt/sources.list.d/cran.list
 RUN apt-key adv --keyserver keyserver.ubuntu.com --recv-keys E084DAB9
 
 RUN apt-get update && \

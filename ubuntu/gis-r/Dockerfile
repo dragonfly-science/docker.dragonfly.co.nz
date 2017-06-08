@@ -1,4 +1,4 @@
-FROM docker.dragonfly.co.nz/ubuntu/nz
+FROM docker.dragonfly.co.nz/ubuntu/nz:17.04
 MAINTAINER finlay@dragonfly.co.nz
 
 RUN echo "deb http://cran.stat.auckland.ac.nz/bin/linux/ubuntu trusty/" > /etc/apt/sources.list.d/cran.list

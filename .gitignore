@@ -1,10 +1,5 @@
 .docker
 *.swp
 *~
-scratch/minimal/minimal
-debian/nz/Dockerfile
-ruby/nz/Dockerfile
-jessie/nz/Dockerfile
-node/nz/Dockerfile
 ubuntu/nz/Dockerfile
 .official
