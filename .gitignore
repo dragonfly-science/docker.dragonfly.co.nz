@@ -1,5 +1,3 @@
-.docker
 *.swp
 *~
-ubuntu/nz/Dockerfile
-.official
+.docker*

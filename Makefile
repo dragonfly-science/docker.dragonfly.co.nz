@@ -1,19 +1,15 @@
+TAG := 17.04
 
 REGISTRY := docker.dragonfly.co.nz
 DOCKERS := \
-	ubuntu/dragonfly-base \
-	ubuntu/texlive \
-	ubuntu/texlive-r #\
-#	ubuntu/gis-r 
+	dragonfly-base \
+	dragonfly-tidyverse \
+	dragonfly-reports \
+	dragonfly-r
 
-BASEIMAGES := \
-	ubuntu 
 
-TAG := 17.04
-
-DOCKER_TARGETS := $(addsuffix /.docker,$(DOCKERS))
+DOCKER_TARGETS := $(addsuffix /.docker-$(TAG),$(DOCKERS))
 REGISTRY_DOCKERS := $(addprefix $(REGISTRY)/,$(DOCKERS))
-BASEIMAGE_TARGETS := $(addsuffix /.official,$(BASEIMAGES))
 
 .PHONY: all
 all: $(DOCKER_TARGETS)
@@ -28,28 +24,20 @@ push: $(REGISTRY_DOCKERS)
 .PHONY: deploy
 deploy: fetch all push
 
-ubuntu/nz/.docker: ubuntu/.official
-ubuntu/texlive/.docker: ubuntu/nz/.docker
-ubuntu/texlive-r/.docker: ubuntu/texlive/.docker
-ubuntu/dragonfly-base/.docker: ubuntu/texlive-r/.docker
-ubuntu/gis-r/.docker: ubuntu/texlive/.docker
+dragonfly-tidyverse/.docker-$(TAG): dragonfly-base/.docker-$(TAG)
+dragonfly-reports/.docker-$(TAG): dragonfly-base/.docker-$(TAG)
+dragonfly-r/.docker-$(TAG): dragonfly-base/.docker-$(TAG)
 
 .PHONY: clean
 clean:
 	for d in `find . -name .docker | xargs cat`; do docker rmi -f $d; done
-	find . -name .docker -delete
+	find . -name .docker* -delete
 
 ubuntu/.official:
 	docker pull ubuntu:$(TAG) && touch $@
 
-%/.docker: %/Dockerfile
+%/.docker-$(TAG): %/Dockerfile
 	docker build -t $(REGISTRY)/$*:$(TAG) $* && touch $@
 
-.PRECIOUS: ubuntu/nz/Dockerfile
-ubuntu/nz/Dockerfile: ubuntu/nz/Dockerfile.tmpl includes/df-user.inc includes/nz-locale.inc
-	@cp $< $@
-	@sed -i -e "/__INCLUDE_DF_USER__/r includes/df-user.inc" -e "//d" $@
-	@sed -i -e "/__INCLUDE_NZ_LOCALE__/r includes/nz-locale.inc" -e "//d" $@
-
-$(REGISTRY)/%: %/.docker
+$(REGISTRY)/%: %/.docker-$(TAG)
 	docker push $(REGISTRY)/$*
