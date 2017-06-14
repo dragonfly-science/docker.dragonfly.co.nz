@@ -30,7 +30,7 @@ dragonfly-r/.docker-$(TAG): dragonfly-base/.docker-$(TAG)
 
 .PHONY: clean
 clean:
-	for d in `find . -name .docker | xargs cat`; do docker rmi -f $d; done
+	for d in `find . -name .docker-$(TAG) | xargs cat`; do docker rmi -f $d; done
 	find . -name .docker* -delete
 
 ubuntu/.official:
