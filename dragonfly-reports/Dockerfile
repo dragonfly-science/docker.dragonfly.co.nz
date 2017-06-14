@@ -1,15 +1,7 @@
 FROM docker.dragonfly.co.nz/dragonfly-base:17.04
 
 # R
-COPY r-key.txt /tmp/ 
-RUN apt-key add /tmp/r-key.txt
-
 RUN apt-get update && \
-    apt-get install -y --no-install-recommends software-properties-common && \
-    apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
-
-RUN apt-add-repository "deb http://cran.stat.auckland.ac.nz/bin/linux/ubuntu zesty/" && \ 
-    apt-get update && \
     apt-get install -y --no-install-recommends \
         r-base-dev r-recommended r-base \
         git-core libssl-dev curl libpq-dev libssh2-1-dev libcurl4-openssl-dev libxml2-dev && \
