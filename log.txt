@@ -1,0 +1,6 @@
+[2017-06-15] docker build -t docker.dragonfly.co.nz/dragonfly-base-16.04
+[2017-06-15] docker build -t docker.dragonfly.co.nz/dragonfly-tidyverse-16.04
+[2017-06-15] docker build -t docker.dragonfly.co.nz/dragonfly-reports-16.04
+[2017-06-15] docker push docker.dragonfly.co.nz/dragonfly-base-16.04:2017-06-15
+[2017-06-15] docker push docker.dragonfly.co.nz/dragonfly-tidyverse-16.04:2017-06-15
+[2017-06-15] docker push docker.dragonfly.co.nz/dragonfly-reports-16.04:2017-06-15

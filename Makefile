@@ -1,4 +1,5 @@
-TAG := 16.04
+UBUNTU := 16.04
+DATE := $(shell date +%Y-%m-%d)
 
 REGISTRY := docker.dragonfly.co.nz
 DOCKERS := \
@@ -6,35 +7,31 @@ DOCKERS := \
 	dragonfly-tidyverse \
 	dragonfly-reports 
 
-DOCKER_TARGETS := $(addsuffix /.docker-$(TAG),$(DOCKERS))
+DOCKER_TARGETS := $(addsuffix /.docker,$(DOCKERS))
 REGISTRY_DOCKERS := $(addprefix $(REGISTRY)/,$(DOCKERS))
 
 .PHONY: all
 all: $(DOCKER_TARGETS)
 
-.PHONY: fetch
-fetch:
-	$(MAKE) -B $(BASEIMAGE_TARGETS)
-
 .PHONY: push
 push: $(REGISTRY_DOCKERS)
 
 .PHONY: deploy
-deploy: fetch all push
+deploy: all push
 
-dragonfly-tidyverse/.docker-$(TAG): dragonfly-base/.docker-$(TAG)
-dragonfly-reports/.docker-$(TAG): dragonfly-base/.docker-$(TAG)
+dragonfly-tidyverse/.docker: dragonfly-base/.docker
+dragonfly-reports/.docker: dragonfly-base/.docker
 
 .PHONY: clean
 clean:
-	for d in `find . -name .docker-$(TAG) | xargs cat`; do docker rmi -f $d; done
+	for d in `find . -name .docker | xargs cat`; do docker rmi -f $d; done
 	find . -name .docker* -delete
 
-ubuntu/.official:
-	docker pull ubuntu:$(TAG) && touch $@
+%/.docker: %/Dockerfile
+	docker build -t $(REGISTRY)/$*-$(UBUNTU) $* && touch $@ && \
+	echo "[$(DATE)] docker build -t $(REGISTRY)/$*-$(UBUNTU)" >> log.txt
 
-%/.docker-$(TAG): %/Dockerfile
-	docker build -t $(REGISTRY)/$*:$(TAG) $* && touch $@
-
-$(REGISTRY)/%: %/.docker-$(TAG)
-	docker push $(REGISTRY)/$*:$(TAG)
+$(REGISTRY)/%: %/.docker
+	docker tag $(REGISTRY)/$*-$(UBUNTU) $(REGISTRY)/$*-$(UBUNTU):$(DATE) && \
+	docker push $(REGISTRY)/$*-$(UBUNTU):$(DATE) && \
+	echo "[$(DATE)] docker push $(REGISTRY)/$*-$(UBUNTU):$(DATE)" >> log.txt

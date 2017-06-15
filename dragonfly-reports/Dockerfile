@@ -1,4 +1,4 @@
-FROM docker.dragonfly.co.nz/dragonfly-base:16.04
+FROM docker.dragonfly.co.nz/dragonfly-base-16.04
 
 # R
 RUN apt-get update && \
