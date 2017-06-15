@@ -22,8 +22,8 @@ push: $(REGISTRY_DOCKERS)
 deploy: all push
 
 dragonfly-tidyverse/.docker: dragonfly-base/.docker
-dragonfly-reports/.docker: dragonfly-base/.docker
-dragonfly-r/.docker-$(TAG): dragonfly-base/.docker
+dragonfly-reports/.docker: dragonfly-tidyverse/.docker
+dragonfly-r/.docker-$(TAG): dragonfly-reports/.docker
 
 .PHONY: clean
 clean:

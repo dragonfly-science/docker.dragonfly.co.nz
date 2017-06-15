@@ -1,21 +1,5 @@
-FROM docker.dragonfly.co.nz/dragonfly-base-17.04
+FROM docker.dragonfly.co.nz/dragonfly-reports-17.04
 MAINTAINER edward@dragonfly.co.nz
-
-RUN apt-get update && \
-    apt-get install -y --no-install-recommends \
-        r-base-dev r-recommended r-base \
-        git-core libssl-dev curl libpq-dev libssh2-1-dev libcurl4-openssl-dev libxml2-dev && \
-    apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
-
-COPY Rprofile.site /etc/R/
-
-RUN Rscript -e "install.packages('devtools')"
-RUN Rscript -e "devtools::install_version('dplyr', '0.7.0')"
-RUN Rscript -e "devtools::install_version('ggplot2', '2.2.1')"
-RUN Rscript -e "devtools::install_version('tidyverse', '1.1.1')"
-# Above this line is from dragonfly-tidyverse
-
-RUN Rscript -e "devtools::install_version('data.table', '1.10.4')"
 
 RUN apt-get update && \
     apt-get install -y --no-install-recommends \
@@ -34,12 +18,6 @@ RUN sed -i 's/md5\|peer/trust/' /etc/postgresql/9.6/main/pg_hba.conf
 RUN Rscript -e "devtools::install_version('foreign', '0.8-68')"
 RUN Rscript -e "devtools::install_version('RPostgreSQL', '0.4-1')"
 RUN Rscript -e "devtools::install_version('rjson', '0.2.15')"
-
-# Reporting
-RUN Rscript -e "devtools::install_version('xtable', '1.8-2')"
-RUN Rscript -e "devtools::install_version('rmarkdown', '1.5')"
-RUN Rscript -e "devtools::install_version('knitr', '1.16')"
-RUN Rscript -e "devtools::install_version('pander', '0.6.0')"
 
 # GIS
 RUN Rscript -e "devtools::install_version('shapefiles', '0.7')"
