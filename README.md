@@ -9,15 +9,16 @@ are:
     R packages from the tidyverse
 3.  `dragonfly-reports` - The tidyverse, latex, and enough R packages to process basic 
     Sweave files
+4.  `dragonfly-r` - A fat desktop sized docker, Potsgres, GIS tools, and a range of R packages
 
-The docker files have the ubuntu version in their name,  e.g., `dragonfly-reports-16.04` and are tagged with the date 
+The docker files have the ubuntu version in their name,  e.g., `dragonfly-reports-17.04` and are tagged with the date 
 that they were pushed to the registry. To list the tags of the available images, you can visit the 
-registry URL for each repository: e.g., https://docker.dragonfly.co.nz/v2/dragonfly-reports-16.04/tags/list
+registry URL for each repository: e.g., https://docker.dragonfly.co.nz/v2/dragonfly-reports-17.04/tags/list
 
 
 To use these images in Gorbachev, put something like the following in your `gorbachev.yaml` file:
 ```
-docker: dragonfly-reports-16.04:2017-06-15
+docker: dragonfly-reports-17.04:2017-06-15
 ```
 Your project will then be built with that image every time it runs on Gorbachev.
 
@@ -28,11 +29,11 @@ To use a docker to run a particular project, you can use the following command:
 ```
 docker run -it --rm --net=host --user=$$(id -u):$$(id -g) -v$$(pwd):/work -w /work DOCKER CMD
 ```
-where DOCKER is the name of the docker that you want to run, and CMD is the CMD that you want
+where `DOCKER` is the name of the docker that you want to run, and `CMD` is the command that you want
 to be executed when the docker starts. This mounts the current directory into a directory called
-`work` and the `CMD` will be run with the same user and group as in the host. Make sure
+`work` and the command will be run with the same user and group as in the host. Make sure
 that you write any files that you want to keep somewhere under the work directory, otherwise
-you wll loose them when the docker finishes.
+you wll lose them when the docker finishes.
 
 # Rolling your own docker
 
