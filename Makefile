@@ -1,12 +1,10 @@
-TAG := 17.04
+TAG := 16.04
 
 REGISTRY := docker.dragonfly.co.nz
 DOCKERS := \
 	dragonfly-base \
 	dragonfly-tidyverse \
-	dragonfly-reports \
-	dragonfly-r
-
+	dragonfly-reports 
 
 DOCKER_TARGETS := $(addsuffix /.docker-$(TAG),$(DOCKERS))
 REGISTRY_DOCKERS := $(addprefix $(REGISTRY)/,$(DOCKERS))
@@ -26,7 +24,6 @@ deploy: fetch all push
 
 dragonfly-tidyverse/.docker-$(TAG): dragonfly-base/.docker-$(TAG)
 dragonfly-reports/.docker-$(TAG): dragonfly-base/.docker-$(TAG)
-dragonfly-r/.docker-$(TAG): dragonfly-base/.docker-$(TAG)
 
 .PHONY: clean
 clean:
@@ -40,4 +37,4 @@ ubuntu/.official:
 	docker build -t $(REGISTRY)/$*:$(TAG) $* && touch $@
 
 $(REGISTRY)/%: %/.docker-$(TAG)
-	docker push $(REGISTRY)/$*
+	docker push $(REGISTRY)/$*:$(TAG)

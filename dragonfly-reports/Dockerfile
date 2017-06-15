@@ -1,4 +1,4 @@
-FROM docker.dragonfly.co.nz/dragonfly-base:17.04
+FROM docker.dragonfly.co.nz/dragonfly-base:16.04
 
 # R
 RUN apt-get update && \
@@ -36,8 +36,8 @@ RUN apt-add-repository multiverse && \
 
 COPY fonts/ /usr/local/share/fonts/
 
-COPY dragonfly-latex-templates_1.14_all.deb /tmp/ 
-RUN dpkg -i /tmp/dragonfly-latex-templates_1.14_all.deb
-COPY mpi-latex-templates_1.11_all.deb /tmp/ 
-RUN dpkg -i /tmp/mpi-latex-templates_1.11_all.deb
+COPY dragonfly-latex-templates_1.13_all.deb /tmp/ 
+RUN dpkg -i /tmp/dragonfly-latex-templates_1.13_all.deb
+COPY mpi-latex-templates_1.10_all.deb /tmp/ 
+RUN dpkg -i /tmp/mpi-latex-templates_1.10_all.deb
 
