@@ -18,7 +18,6 @@ RUN Rscript -e "devtools::install_version('data.table', '1.10.4')"
 # Reproducibility
 RUN Rscript -e "devtools::install_version('xtable', '1.8-2')"
 RUN Rscript -e "devtools::install_version('rmarkdown', '1.5')"
-RUN Rscript -e "devtools::install_version('rmarkdown', '1.5')"
 RUN Rscript -e "devtools::install_version('knitr', '1.16')"
 RUN Rscript -e "devtools::install_version('pander', '0.6.0')"
 
