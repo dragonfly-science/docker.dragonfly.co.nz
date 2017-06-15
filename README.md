@@ -1,7 +1,7 @@
 # Dragonfly docker files
 
-There are three docker repositories maintained in this repository, all based on ubuntu (switch branches to switch
-your base ubuntu version). Dockers built here are available from https://docker.dragonfly.co.nz. The three dockers
+There are some dragonfly dockers maintained in this repository, all based on ubuntu (switch branches to switch
+your base ubuntu version). Dockers built here are available from https://docker.dragonfly.co.nz. The dockers
 are:
 
 1. `dragonfly-base` - Based on ubuntu, with New Zealand localisation and a deployhub user 
