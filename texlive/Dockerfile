@@ -17,3 +17,7 @@ RUN apt-add-repository multiverse && \
     apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
 COPY fonts/ /usr/local/share/fonts/
+
+RUN apt-get update && \
+    apt-get install -y debhelper && \
+    apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
