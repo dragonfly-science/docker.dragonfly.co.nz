@@ -1,4 +1,4 @@
-FROM docker.dragonfly.co.nz/dragonfly-base:17.04
+FROM docker.dragonfly.co.nz/dragonfly-base-17.04
 MAINTAINER edward@dragonfly.co.nz
 
 RUN apt-get update && \
