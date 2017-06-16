@@ -38,6 +38,6 @@ COPY fonts/ /usr/local/share/fonts/
 
 COPY dragonfly-latex-templates_1.13_all.deb /tmp/ 
 RUN dpkg -i /tmp/dragonfly-latex-templates_1.13_all.deb
-COPY mpi-latex-templates_1.10_all.deb /tmp/ 
-RUN dpkg -i /tmp/mpi-latex-templates_1.10_all.deb
+COPY mpi-latex-templates_1.11_all.deb /tmp/ 
+RUN dpkg -i /tmp/mpi-latex-templates_1.11_all.deb
 

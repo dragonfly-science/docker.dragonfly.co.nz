@@ -5,7 +5,8 @@ REGISTRY := docker.dragonfly.co.nz
 DOCKERS := \
 	dragonfly-base \
 	dragonfly-tidyverse \
-	dragonfly-reports 
+	dragonfly-reports \
+	texlive
 
 DOCKER_TARGETS := $(addsuffix /.docker,$(DOCKERS))
 REGISTRY_DOCKERS := $(addprefix $(REGISTRY)/,$(DOCKERS))
@@ -20,6 +21,7 @@ push: $(REGISTRY_DOCKERS)
 deploy: all push
 
 dragonfly-tidyverse/.docker: dragonfly-base/.docker
+dragonfly-texlive/.docker: dragonfly-base/.docker
 dragonfly-reports/.docker: dragonfly-base/.docker
 
 .PHONY: clean
