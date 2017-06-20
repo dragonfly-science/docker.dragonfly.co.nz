@@ -22,7 +22,7 @@ deploy: all push
 
 dragonfly-tidyverse/.docker: dragonfly-base/.docker
 dragonfly-texlive/.docker: dragonfly-base/.docker
-dragonfly-reports/.docker: dragonfly-base/.docker
+dragonfly-reports/.docker: dragonfly-base/.docker dragonfly-reports/mpi-latex-templates_*
 
 .PHONY: clean
 clean:
