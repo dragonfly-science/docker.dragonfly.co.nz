@@ -9,7 +9,7 @@ are:
     R packages from the tidyverse
 3.  `dragonfly-reports` - The tidyverse, latex, and enough R packages to process basic 
     Sweave files
-4.  `dragonfly-r` - A fat desktop sized docker, Potsgres, GIS tools, and a range of R packages
+4.  `dragonverse` - A fat desktop sized docker with Potsgres, GIS tools, and a range of R packages
 
 The docker files have the ubuntu version in their name,  e.g., `dragonfly-reports-17.04` and are tagged with the date 
 that they were pushed to the registry. To list the tags of the available images, you can visit the 
@@ -45,8 +45,8 @@ a dockerfile by running a command like the following:
 docker build -t docker.dragonfly.co.nz/NAME:TAG PATH
  ```
 
-Where `NAME` is the name you want to give your repository, the optional TAG allows
-you to specify the version, and `PATH` is the path to the directory of the Docekerfile
+Where `NAME` is the name you want to give your repository, the optional `TAG` allows
+you to specify the version, and `PATH` is the path to the directory of the Dockerfile
 (often times just `.`). Once you have happily built the docker, push it to the
 dragonfly repository with:
 
