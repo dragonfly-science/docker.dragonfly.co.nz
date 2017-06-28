@@ -6,7 +6,7 @@ DOCKERS := \
 	dragonfly-base \
 	dragonfly-tidyverse \
 	dragonfly-reports \
-	dragonfly-r \
+	dragonverse \
 	texlive
 
 DOCKER_TARGETS := $(addsuffix /.docker,$(DOCKERS))
@@ -24,7 +24,7 @@ deploy: all push
 dragonfly-tidyverse/.docker: dragonfly-base/.docker
 texlive/.docker: dragonfly-base/.docker
 dragonfly-reports/.docker: dragonfly-tidyverse/.docker
-dragonfly-r/.docker-$(TAG): dragonfly-reports/.docker
+dragonverse/.docker-$(TAG): dragonfly-reports/.docker
 
 .PHONY: clean
 clean:

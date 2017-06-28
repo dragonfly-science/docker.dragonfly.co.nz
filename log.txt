@@ -31,3 +31,9 @@
 [2017-06-15] docker push docker.dragonfly.co.nz/dragonfly-r-17.04:2017-06-15
 [2017-06-15] docker push docker.dragonfly.co.nz/texlive-17.04:2017-06-15
 [2017-06-16] docker build -t docker.dragonfly.co.nz/texlive-17.04
+[2017-06-28] docker build -t docker.dragonfly.co.nz/dragonfly-base-17.04
+[2017-06-28] docker build -t docker.dragonfly.co.nz/dragonfly-tidyverse-17.04
+[2017-06-28] docker build -t docker.dragonfly.co.nz/dragonfly-reports-17.04
+[2017-06-28] docker build -t docker.dragonfly.co.nz/dragonverse-17.04
+[2017-06-28] docker build -t docker.dragonfly.co.nz/texlive-17.04
+[2017-06-28] docker push docker.dragonfly.co.nz/dragonverse-17.04:2017-06-28

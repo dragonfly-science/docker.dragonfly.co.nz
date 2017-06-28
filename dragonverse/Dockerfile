@@ -8,7 +8,8 @@ RUN apt-get update && \
     grass jags \
     proj-bin proj-data \
     postgresql-9.6 postgresql-9.6-postgis-2.3 \
-    qgis  && \
+    qgis \
+    libudunits2-0 libudunits2-dev && \
     apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
 #Postgresql setup
@@ -19,28 +20,38 @@ RUN Rscript -e "devtools::install_version('foreign', '0.8-68')"
 RUN Rscript -e "devtools::install_version('RPostgreSQL', '0.4-1')"
 RUN Rscript -e "devtools::install_version('rjson', '0.2.15')"
 
+# Data structures
+RUN Rscript -e "devtools::install_version('data.tree', '0.7.0')"
+RUN Rscript -e "devtools::install_version('ape', '4.1')"
+
 # GIS
 RUN Rscript -e "devtools::install_version('shapefiles', '0.7')"
 RUN Rscript -e "devtools::install_version('maptools', '0.9-2')"
 RUN Rscript -e "devtools::install_version('rgeos', '0.3-23')"
 RUN Rscript -e "devtools::install_version('mapproj', '1.2-5')"
 RUN Rscript -e "devtools::install_version('rgdal', '1.2-7')"
-RUN Rscript -e "devtools::install_version('sp', '1.2-4')"
+RUN Rscript -e "devtools::install_version('sf', '0.5-1')"
 RUN Rscript -e "devtools::install_version('rgrass7', '0.1-9')"
+RUN Rscript -e "devtools::install_version('raster', '2.5-8')"
 
 # Plotting
 RUN Rscript -e "devtools::install_version('RColorBrewer', '1.1-2')"
 RUN Rscript -e "devtools::install_version('viridis', '0.4.0')"
 RUN Rscript -e "devtools::install_version('gridExtra', '2.2.1')"
 RUN Rscript -e "devtools::install_version('gridSVG', '1.5-1')"
-RUN Rscript -e "devtools::install_version('lattice', '0.20-35')"
+RUN Rscript -e "devtools::install_version('ggrepel', '0.6.5')"
+RUN Rscript -e "devtools::install_version('directlabels', '2017.03.31')"
+RUN Rscript -e "devtools::install_version('plotrix', '3.6-5')"
+RUN Rscript -e "devtools::install_version('cowplot', '0.7.0')"
+RUN Rscript -e "devtools::install_version('ggsn', '0.4.0')"
+RUN Rscript -e "devtools::install_github('dragonfly-science/plotmapbox', ref='760d17b')"
 
 # Bayesian modelling
 RUN Rscript -e "devtools::install_version('rjags', '4-6')"
 RUN Rscript -e "devtools::install_version('rstan', '2.15.1')"
-RUN Rscript -e "devtools::install_version('R2jags', '0.5-7')"
 RUN Rscript -e "devtools::install_version('coda', '0.19-1')"
 RUN Rscript -e "devtools::install_version('ggmcmc', '1.1')"
+RUN Rscript -e "devtools::install_version('loo', '1.1.0')"
 
 # Maximum likelihood modelling
 RUN Rscript -e "devtools::install_version('MASS', '7.3-47')"
