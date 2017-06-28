@@ -11,3 +11,8 @@
 [2017-06-16] docker build -t docker.dragonfly.co.nz/dragonfly-reports-16.04
 [2017-06-20] docker build -t docker.dragonfly.co.nz/dragonfly-reports-16.04
 [2017-06-20] docker push docker.dragonfly.co.nz/dragonfly-reports-16.04:2017-06-20
+[2017-06-23] docker build -t docker.dragonfly.co.nz/dragonfly-reports-16.04
+[2017-06-23] docker push docker.dragonfly.co.nz/dragonfly-reports-16.04:2017-06-23
+[2017-06-23] docker build -t docker.dragonfly.co.nz/dragonfly-reports-16.04
+[2017-06-23] docker push docker.dragonfly.co.nz/dragonfly-reports-16.04:2017-06-23
+[2017-06-23] docker push docker.dragonfly.co.nz/dragonfly-reports-16.04:2017-06-23-v2
