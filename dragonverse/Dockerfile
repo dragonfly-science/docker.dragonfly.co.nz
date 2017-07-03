@@ -10,6 +10,7 @@ RUN apt-get update && \
     postgresql-9.6 postgresql-9.6-postgis-2.3 \
     qgis \
     libudunits2-0 libudunits2-dev && \
+    apt upgrade --yes && \
     apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
 #Postgresql setup
@@ -58,4 +59,5 @@ RUN Rscript -e "devtools::install_version('MASS', '7.3-47')"
 RUN Rscript -e "devtools::install_version('lme4', '1.1-13')"
 RUN Rscript -e "devtools::install_version('cplm', '0.7-5')"
 RUN Rscript -e "devtools::install_version('tables', '0.8')"
+
 

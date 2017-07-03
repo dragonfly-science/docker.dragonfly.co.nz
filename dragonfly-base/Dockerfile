@@ -16,6 +16,7 @@ RUN locale-gen en_NZ.UTF-8
 RUN dpkg-reconfigure locales
 
 RUN apt-get update && \
+    apt upgrade --yes && \
     apt-get autoremove -y && apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
 ENV LANG en_NZ.UTF-8

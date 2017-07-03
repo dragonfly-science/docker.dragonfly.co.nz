@@ -23,8 +23,8 @@ deploy: all push
 
 dragonfly-tidyverse/.docker: dragonfly-base/.docker
 texlive/.docker: dragonfly-base/.docker
-dragonfly-reports/.docker: dragonfly-tidyverse/.docker
-dragonverse/.docker-$(TAG): dragonfly-reports/.docker
+dragonfly-reports/.docker: dragonfly-tidyverse/.docker 
+dragonverse/.docker: dragonfly-reports/.docker
 
 .PHONY: clean
 clean:
@@ -37,5 +37,7 @@ clean:
 
 $(REGISTRY)/%: %/.docker
 	docker tag $(REGISTRY)/$*-$(UBUNTU) $(REGISTRY)/$*-$(UBUNTU):$(DATE) && \
+	docker tag $(REGISTRY)/$*-$(UBUNTU) $(REGISTRY)/$*-$(UBUNTU):latest && \
 	docker push $(REGISTRY)/$*-$(UBUNTU):$(DATE) && \
+	docker push $(REGISTRY)/$*-$(UBUNTU):latest && \
 	echo "[$(DATE)] docker push $(REGISTRY)/$*-$(UBUNTU):$(DATE)" >> log.txt
