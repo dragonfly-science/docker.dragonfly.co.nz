@@ -83,3 +83,5 @@
 [2017-07-04] docker push docker.dragonfly.co.nz/dragonfly-base-17.04:2017-07-04
 [2017-07-04] docker push docker.dragonfly.co.nz/dragonfly-tidyverse-17.04:2017-07-04
 [2017-07-04] docker push docker.dragonfly.co.nz/dragonfly-reports-17.04:2017-07-04
+[2017-07-04] docker push docker.dragonfly.co.nz/dragonverse-17.04:2017-07-04
+[2017-07-04] docker push docker.dragonfly.co.nz/texlive-17.04:2017-07-04
