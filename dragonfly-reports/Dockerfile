@@ -25,8 +25,8 @@ RUN apt-add-repository multiverse && \
 
 COPY fonts/ /usr/local/share/fonts/
 
-COPY dragonfly-latex-templates_1.14_all.deb /tmp/ 
-RUN dpkg -i /tmp/dragonfly-latex-templates_1.14_all.deb
+COPY dragonfly-latex-templates_1.15_all.deb /tmp/ 
+RUN dpkg -i /tmp/dragonfly-latex-templates_1.15_all.deb
 COPY mpi-latex-templates_1.12_all.deb /tmp/ 
 RUN dpkg -i /tmp/mpi-latex-templates_1.12_all.deb
 
