@@ -50,7 +50,8 @@ RUN Rscript -e "devtools::install_github('dragonfly-science/plotmapbox', ref='76
 
 # Bayesian modelling
 RUN Rscript -e "devtools::install_version('rjags', '4-6')"
-RUN Rscript -e "devtools::install_version('rstan', '2.15.1')"
+RUN Rscript -e "devtools::install_version('StanHeaders', '2.16.0-1')"
+RUN Rscript -e "devtools::install_version('rstan', '2.16.2')"
 RUN Rscript -e "devtools::install_version('coda', '0.19-1')"
 RUN Rscript -e "devtools::install_version('ggmcmc', '1.1')"
 RUN Rscript -e "devtools::install_version('loo', '1.1.0')"
