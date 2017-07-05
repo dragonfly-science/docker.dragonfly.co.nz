@@ -20,6 +20,7 @@ RUN sed -i 's/md5\|peer/trust/' /etc/postgresql/9.6/main/pg_hba.conf
 RUN Rscript -e "devtools::install_version('foreign', '0.8-68')"
 RUN Rscript -e "devtools::install_version('RPostgreSQL', '0.4-1')"
 RUN Rscript -e "devtools::install_version('rjson', '0.2.15')"
+RUN Rscript -e "devtools::install_version('dbplyr', '1.1.0')"
 
 # Data structures
 RUN Rscript -e "devtools::install_version('data.tree', '0.7.0')"
@@ -60,4 +61,5 @@ RUN Rscript -e "devtools::install_version('lme4', '1.1-13')"
 RUN Rscript -e "devtools::install_version('cplm', '0.7-5')"
 RUN Rscript -e "devtools::install_version('tables', '0.8')"
 
-
+# Code management
+RUN Rscript -e "devtools::install_version('testthat', '1.0.2')"
