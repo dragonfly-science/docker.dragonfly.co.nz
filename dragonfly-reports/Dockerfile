@@ -34,3 +34,7 @@ RUN dpkg -i /tmp/mpi-latex-templates_1.12_all.deb
 RUN apt-get update && \
     apt-get upgrade --yes && \
     apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
+
+RUN apt-get update && \
+    apt-get install -y python-pygments && \
+    apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
