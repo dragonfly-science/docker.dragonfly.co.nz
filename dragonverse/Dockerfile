@@ -57,6 +57,10 @@ RUN Rscript -e "devtools::install_version('ggmcmc', '1.1')"
 RUN Rscript -e "devtools::install_version('loo', '1.1.0')"
 
 # Maximum likelihood modelling
+RUN apt-get update && \
+    apt-get install -y --no-install-recommends \
+    libnlopt-dev && \ 
+    apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 RUN Rscript -e "devtools::install_version('MASS', '7.3-47')"
 RUN Rscript -e "devtools::install_version('lme4', '1.1-13')"
 RUN Rscript -e "devtools::install_version('cplm', '0.7-5')"
