@@ -129,3 +129,10 @@
 [2017-11-30] docker push docker.dragonfly.co.nz/dragonfly-reports-17.04:2017-11-30
 [2017-11-30] docker push docker.dragonfly.co.nz/dragonverse-17.04:2017-11-30
 [2017-11-30] docker push docker.dragonfly.co.nz/texlive-17.04:2017-11-30
+[2017-12-12] docker build -t docker.dragonfly.co.nz/dragonfly-reports-17.04
+[2017-12-12] docker build -t docker.dragonfly.co.nz/dragonverse-17.04
+[2017-12-13] docker push docker.dragonfly.co.nz/dragonfly-base-17.04:2017-12-13
+[2017-12-13] docker push docker.dragonfly.co.nz/dragonfly-tidyverse-17.04:2017-12-13
+[2017-12-13] docker push docker.dragonfly.co.nz/dragonfly-reports-17.04:2017-12-13
+[2017-12-13] docker push docker.dragonfly.co.nz/dragonverse-17.04:2017-12-13
+[2017-12-13] docker push docker.dragonfly.co.nz/texlive-17.04:2017-12-13
