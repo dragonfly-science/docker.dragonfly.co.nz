@@ -1,4 +1,4 @@
-FROM ubuntu:17.04
+FROM ubuntu:17.10
 MAINTAINER edward@dragonfly.co.nz
 
 # Set New Zealand mirrors and set timezone to Auckland

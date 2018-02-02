@@ -1,5 +1,7 @@
-FROM docker.dragonfly.co.nz/dragonfly-base-17.04
+FROM docker.dragonfly.co.nz/dragonfly-base-17.10
 MAINTAINER edward@dragonfly.co.nz
+
+RUN cat '
 
 RUN apt-get update && \
     apt-get install -y --no-install-recommends \
@@ -8,9 +10,7 @@ RUN apt-get update && \
     apt upgrade --yes && \
     apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
+# Sets the cran repository to point to a snapshot
 COPY Rprofile.site /etc/R/
 
-RUN Rscript -e "install.packages('devtools')"
-RUN Rscript -e "devtools::install_version('dplyr', '0.7.0')"
-RUN Rscript -e "devtools::install_version('ggplot2', '2.2.1')"
-RUN Rscript -e "devtools::install_version('tidyverse', '1.1.1')"
+RUN Rscript -e "install.packages(c('devtools', 'dplyr', 'ggplot2', 'tidyverse'))"

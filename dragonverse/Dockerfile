@@ -1,4 +1,4 @@
-FROM docker.dragonfly.co.nz/dragonfly-reports-17.04
+FROM docker.dragonfly.co.nz/dragonfly-reports-17.10
 MAINTAINER edward@dragonfly.co.nz
 
 RUN apt-get update && \

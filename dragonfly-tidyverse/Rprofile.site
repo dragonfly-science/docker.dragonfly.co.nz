@@ -1,7 +1,7 @@
 # Set the URL for CRAN
 local({
     r <- getOption('repos')
-    r['CRAN'] = 'http://cran.stat.auckland.ac.nz'
+    r['CRAN'] = 'https://cran.microsoft.com/snapshot/2018-01-17/'
     options(repos = r)
 })
 .libPaths('/usr/local/lib/R/site-library')

@@ -1,4 +1,4 @@
-FROM docker.dragonfly.co.nz/dragonfly-base-17.04
+FROM docker.dragonfly.co.nz/dragonfly-base-17.10
 MAINTAINER edward@dragonfly.co.nz
 
 # Docker with texlive and debian tools

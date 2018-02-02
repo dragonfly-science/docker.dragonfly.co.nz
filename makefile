@@ -1,4 +1,4 @@
-UBUNTU := 17.04
+UBUNTU := 17.10
 DATE := $(shell date +%Y-%m-%d)
 
 REGISTRY := docker.dragonfly.co.nz
