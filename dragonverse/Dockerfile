@@ -9,6 +9,7 @@ RUN apt-get update && \
     proj-bin proj-data \
     postgresql-9.6 postgresql-9.6-postgis-2.3 \
     qgis \
+    pandoc \
     libudunits2-0 libudunits2-dev && \
     apt upgrade --yes && \
     apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
