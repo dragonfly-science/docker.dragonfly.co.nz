@@ -1,4 +1,4 @@
-UBUNTU := 17.04
+UBUNTU := 18.04
 DATE := $(shell date +%Y-%m-%d)
 
 REGISTRY := docker.dragonfly.co.nz
@@ -6,8 +6,8 @@ DOCKERS := \
 	dragonfly-base \
 	dragonfly-tidyverse \
 	dragonfly-reports \
-	dragonverse \
-	texlive
+	dragonverse# \
+	#texlive
 
 DOCKER_TARGETS := $(addsuffix /.docker,$(DOCKERS))
 REGISTRY_DOCKERS := $(addprefix $(REGISTRY)/,$(DOCKERS))

@@ -1,4 +1,4 @@
-FROM docker.dragonfly.co.nz/dragonfly-tidyverse-17.04
+FROM docker.dragonfly.co.nz/dragonfly-tidyverse-18.04
 MAINTAINER edward@dragonfly.co.nz
 
 # Data manipulation

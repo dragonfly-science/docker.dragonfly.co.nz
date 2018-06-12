@@ -1,4 +1,4 @@
-FROM docker.dragonfly.co.nz/dragonfly-reports-17.04
+FROM docker.dragonfly.co.nz/dragonfly-reports-18.04
 MAINTAINER edward@dragonfly.co.nz
 
 RUN apt-get update && \
@@ -7,7 +7,7 @@ RUN apt-get update && \
     gdal-bin libgdal-dev libgdal-dev libproj-dev libgeos++-dev \
     grass jags \
     proj-bin proj-data \
-    postgresql-9.6 postgresql-9.6-postgis-2.3 \
+    postgresql-10 postgresql-10-postgis-2.4 \
     qgis \
     pandoc \
     libudunits2-0 libudunits2-dev && \
@@ -15,7 +15,7 @@ RUN apt-get update && \
     apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
 #Postgresql setup
-RUN sed -i 's/md5\|peer/trust/' /etc/postgresql/9.6/main/pg_hba.conf
+RUN sed -i 's/md5\|peer/trust/' /etc/postgresql/10/main/pg_hba.conf
 
 # Talking to databases and other formats
 RUN Rscript -e "devtools::install_version('foreign', '0.8-68')"
@@ -33,13 +33,13 @@ RUN Rscript -e "devtools::install_version('maptools', '0.9-2')"
 RUN Rscript -e "devtools::install_version('rgeos', '0.3-23')"
 RUN Rscript -e "devtools::install_version('mapproj', '1.2-5')"
 RUN Rscript -e "devtools::install_version('rgdal', '1.2-7')"
-RUN Rscript -e "devtools::install_version('sf', '0.5-1')"
+RUN Rscript -e "devtools::install_version('sf', '0.6-3')"
 RUN Rscript -e "devtools::install_version('rgrass7', '0.1-9')"
-RUN Rscript -e "devtools::install_version('raster', '2.5-8')"
+RUN Rscript -e "devtools::install_version('raster', '2.6-7')"
 
 # Plotting
 RUN Rscript -e "devtools::install_version('RColorBrewer', '1.1-2')"
-RUN Rscript -e "devtools::install_version('viridis', '0.4.0')"
+RUN Rscript -e "devtools::install_version('viridis', '0.5.1')"
 RUN Rscript -e "devtools::install_version('gridExtra', '2.2.1')"
 RUN Rscript -e "devtools::install_version('gridSVG', '1.5-1')"
 RUN Rscript -e "devtools::install_version('ggrepel', '0.8.0')"
@@ -52,7 +52,8 @@ RUN Rscript -e "devtools::install_github('dragonfly-science/plotmapbox', ref='76
 # Bayesian modelling
 RUN Rscript -e "devtools::install_version('rjags', '4-6')"
 RUN Rscript -e "devtools::install_version('StanHeaders', '2.16.0-1')"
-RUN Rscript -e "devtools::install_version('rstan', '2.16.2')"
+RUN Rscript -e "devtools::install_version('rstan', '2.17.3')"
+RUN Rscript -e "devtools::install_version('brms', '2.3.1')"
 RUN Rscript -e "devtools::install_version('coda', '0.19-1')"
 RUN Rscript -e "devtools::install_version('ggmcmc', '1.1')"
 RUN Rscript -e "devtools::install_version('loo', '1.1.0')"
