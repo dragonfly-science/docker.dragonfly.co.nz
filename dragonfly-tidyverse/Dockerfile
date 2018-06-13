@@ -1,4 +1,4 @@
-FROM docker.dragonfly.co.nz/dragonfly-base-17.04
+FROM docker.dragonfly.co.nz/dragonfly-base-18.04
 MAINTAINER edward@dragonfly.co.nz
 
 RUN apt-get update && \
@@ -11,6 +11,6 @@ RUN apt-get update && \
 COPY Rprofile.site /etc/R/
 
 RUN Rscript -e "install.packages('devtools')"
-RUN Rscript -e "devtools::install_version('dplyr', '0.7.0')"
+RUN Rscript -e "devtools::install_version('dplyr', '0.7.5')"
 RUN Rscript -e "devtools::install_version('ggplot2', '2.2.1')"
 RUN Rscript -e "devtools::install_version('tidyverse', '1.1.1')"
