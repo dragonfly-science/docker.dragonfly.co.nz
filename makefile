@@ -6,8 +6,8 @@ DOCKERS := \
 	dragonfly-base \
 	dragonfly-tidyverse \
 	dragonfly-reports \
-	dragonverse# \
-	#texlive
+	dragonverse \
+	texlive
 
 DOCKER_TARGETS := $(addsuffix /.docker,$(DOCKERS))
 REGISTRY_DOCKERS := $(addprefix $(REGISTRY)/,$(DOCKERS))

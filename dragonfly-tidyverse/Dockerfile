@@ -8,9 +8,8 @@ RUN apt-get update && \
     apt upgrade --yes && \
     apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
+RUN Rscript -e "install.packages('checkpoint')"
+
 COPY Rprofile.site /etc/R/
 
-RUN Rscript -e "install.packages('devtools')"
-RUN Rscript -e "devtools::install_version('dplyr', '0.7.5')"
-RUN Rscript -e "devtools::install_version('ggplot2', '2.2.1')"
-RUN Rscript -e "devtools::install_version('tidyverse', '1.1.1')"
+RUN Rscript -e "install.packages(c('devtools','dplyr','ggplot2','tidyverse'))"

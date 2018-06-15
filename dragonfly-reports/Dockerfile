@@ -1,14 +1,7 @@
 FROM docker.dragonfly.co.nz/dragonfly-tidyverse-18.04
 MAINTAINER edward@dragonfly.co.nz
 
-# Data manipulation
-RUN Rscript -e "devtools::install_version('data.table', '1.10.4')"
 
-# Reproducibility
-RUN Rscript -e "devtools::install_version('xtable', '1.8-2')"
-RUN Rscript -e "devtools::install_version('rmarkdown', '1.5')"
-RUN Rscript -e "devtools::install_version('knitr', '1.16')"
-RUN Rscript -e "devtools::install_version('pander', '0.6.0')"
 
 # Latex
 RUN apt-get update && \
@@ -27,8 +20,8 @@ COPY fonts/ /usr/local/share/fonts/
 
 COPY dragonfly-latex-templates_1.16_all.deb /tmp/ 
 RUN dpkg -i /tmp/dragonfly-latex-templates_1.16_all.deb
-COPY mpi-latex-templates_1.19_all.deb /tmp/ 
-RUN dpkg -i /tmp/mpi-latex-templates_1.19_all.deb
+COPY mpi-latex-templates_1.20_all.deb /tmp/ 
+RUN dpkg -i /tmp/mpi-latex-templates_1.20_all.deb
 
 # Upgrade
 RUN apt-get update && \
@@ -38,3 +31,6 @@ RUN apt-get update && \
 RUN apt-get update && \
     apt-get install -y python-pygments && \
     apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
+
+# R packages
+RUN Rscript -e "install.packages(c('data.table','rmarkdown','knitr','pander'))"

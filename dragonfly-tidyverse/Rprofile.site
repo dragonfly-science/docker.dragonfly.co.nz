@@ -1,9 +1,10 @@
 # Set the URL for CRAN
 local({
     r <- getOption('repos')
-    r['CRAN'] = 'http://cran.stat.auckland.ac.nz'
+    r['CRAN'] = 'https://mran.microsoft.com/snapshot/2018-06-14'
     options(repos = r)
 })
+
 .libPaths('/usr/local/lib/R/site-library')
 
 # And use A4 paper
