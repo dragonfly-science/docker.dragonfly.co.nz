@@ -36,4 +36,4 @@ RUN Rscript -e "install.packages(c('RColorBrewer','viridis','gridExtra','gridSVG
 RUN Rscript -e "install.packages(c('rjags','rstan','brms','coda','ggmcmc','bayesplot','loo','MASS','lme4','mgcv','cplm','tables','testthat'))"
         
 RUN Rscript -e "devtools::install_github('dragonfly-science/plotmapbox')"
-
+RUN Rscript -e "devtools::install_github('tidyverse/ggplot2')"
