@@ -2,8 +2,7 @@ UBUNTU := 18.04
 DATE := $(shell date +%Y-%m-%d)
 
 REGISTRY := docker.dragonfly.co.nz
-DOCKERS := \
-	dragonfly-base \
+DOCKERS := dragonfly-base \
 	dragonfly-tidyverse \
 	dragonfly-reports \
 	dragonverse \
