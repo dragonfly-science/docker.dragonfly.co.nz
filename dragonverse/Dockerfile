@@ -30,10 +30,8 @@ RUN Rscript -e "install.packages(c('foreign','RPostgreSQL','rjson','dbplyr','dat
 RUN Rscript -e "install.packages(c('shapefiles','maptools','rgeos','mapproj','rgdal','sf','rgrass7','raster'))"
 
 # Plotting
-RUN Rscript -e "install.packages(c('RColorBrewer','viridis','gridExtra','gridSVG','ggrepel','directlabels','plotrix','cowplot','ggsn'))"
+RUN Rscript -e "install.packages(c('RColorBrewer','viridis','gridExtra','gridSVG','ggrepel','directlabels','plotrix','cowplot','ggsn', 'plotmapbox'))"
 
 # Bayes & Co
 RUN Rscript -e "install.packages(c('rjags','rstan','brms','coda','ggmcmc','bayesplot','loo','MASS','lme4','mgcv','cplm','tables','testthat'))"
         
-RUN Rscript -e "devtools::install_github('dragonfly-science/plotmapbox')"
-RUN Rscript -e "devtools::install_github('tidyverse/ggplot2')"

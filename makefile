@@ -31,12 +31,11 @@ clean:
 	find . -name .docker* -delete
 
 %/.docker: %/Dockerfile
-	docker build -t $(REGISTRY)/$*-$(UBUNTU) $* && touch $@ && \
+	docker build --no-cache -t $(REGISTRY)/$*-$(UBUNTU):$(DATE) $* && touch $@ && \
 	echo "[$(DATE)] docker build -t $(REGISTRY)/$*-$(UBUNTU)" >> log.txt
 
 $(REGISTRY)/%: %/.docker
-	docker tag $(REGISTRY)/$*-$(UBUNTU) $(REGISTRY)/$*-$(UBUNTU):$(DATE) && \
-	docker tag $(REGISTRY)/$*-$(UBUNTU) $(REGISTRY)/$*-$(UBUNTU):latest && \
+	docker tag $(REGISTRY)/$*-$(UBUNTU):$(DATE) $(REGISTRY)/$*-$(UBUNTU):latest && \
 	docker push $(REGISTRY)/$*-$(UBUNTU):$(DATE) && \
 	docker push $(REGISTRY)/$*-$(UBUNTU):latest && \
 	echo "[$(DATE)] docker push $(REGISTRY)/$*-$(UBUNTU):$(DATE)" >> log.txt

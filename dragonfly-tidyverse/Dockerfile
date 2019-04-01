@@ -8,8 +8,6 @@ RUN apt-get update && \
     apt upgrade --yes && \
     apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
-RUN Rscript -e "install.packages('checkpoint')"
-
-COPY Rprofile.site /etc/R/
+COPY Rprofile-2019-03-31.site /etc/R/Rprofile.site
 
 RUN Rscript -e "install.packages(c('devtools','dplyr','ggplot2','tidyverse'))"

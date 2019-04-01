@@ -1,4 +1,4 @@
-FROM docker.dragonfly.co.nz/dragonfly-tidyverse-18.04
+FROM docker.dragonfly.co.nz/dragonfly-tidyverse-18.04:2018-11-28
 MAINTAINER edward@dragonfly.co.nz
 
 
@@ -32,4 +32,4 @@ RUN apt-get update && \
     apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
 # R packages
-RUN Rscript -e "install.packages(c('data.table','xtable', 'rmarkdown','knitr','pander'))"
+RUN Rscript -e "install.packages(c('data.table','xtable', 'rmarkdown','knitr','pander','kable', 'kableExtra'))"
