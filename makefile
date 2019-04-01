@@ -31,7 +31,7 @@ clean:
 	find . -name .docker* -delete
 
 %/.docker: %/Dockerfile
-	docker build --no-cache -t $(REGISTRY)/$*-$(UBUNTU):$(DATE) $* && touch $@ && \
+	docker build -t $(REGISTRY)/$*-$(UBUNTU):$(DATE) $* && touch $@ && \
 	echo "[$(DATE)] docker build -t $(REGISTRY)/$*-$(UBUNTU)" >> log.txt
 
 $(REGISTRY)/%: %/.docker

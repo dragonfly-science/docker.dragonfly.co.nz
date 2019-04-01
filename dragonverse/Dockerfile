@@ -1,4 +1,4 @@
-FROM docker.dragonfly.co.nz/dragonfly-reports-18.04
+FROM docker.dragonfly.co.nz/dragonfly-reports-18.04:2019-04-01
 MAINTAINER edward@dragonfly.co.nz
 
 RUN apt-get update && \
@@ -9,7 +9,7 @@ RUN apt-get update && \
     proj-bin proj-data \
     postgresql-10 postgresql-10-postgis-2.4 \
     qgis \
-    pandoc \
+    pandoc libcairo-dev \
     libudunits2-0 libudunits2-dev && \
     apt upgrade --yes && \
     apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
@@ -30,7 +30,7 @@ RUN Rscript -e "install.packages(c('foreign','RPostgreSQL','rjson','dbplyr','dat
 RUN Rscript -e "install.packages(c('shapefiles','maptools','rgeos','mapproj','rgdal','sf','rgrass7','raster'))"
 
 # Plotting
-RUN Rscript -e "install.packages(c('RColorBrewer','viridis','gridExtra','gridSVG','ggrepel','directlabels','plotrix','cowplot','ggsn', 'plotmapbox'))"
+RUN Rscript -e "install.packages(c('RColorBrewer','viridis','gridExtra','gridSVG','ggrepel','directlabels','plotrix','cowplot','ggsn', 'plotmapbox', 'Cairo'))"
 
 # Bayes & Co
 RUN Rscript -e "install.packages(c('rjags','rstan','brms','coda','ggmcmc','bayesplot','loo','MASS','lme4','mgcv','cplm','tables','testthat'))"

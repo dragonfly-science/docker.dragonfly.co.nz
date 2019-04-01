@@ -1,4 +1,4 @@
-FROM docker.dragonfly.co.nz/dragonfly-tidyverse-18.04:2018-11-28
+FROM docker.dragonfly.co.nz/dragonfly-tidyverse-18.04:2019-04-01
 MAINTAINER edward@dragonfly.co.nz
 
 
