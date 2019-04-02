@@ -35,3 +35,8 @@ RUN Rscript -e "install.packages(c('RColorBrewer','viridis','gridExtra','gridSVG
 # Bayes & Co
 RUN Rscript -e "install.packages(c('rjags','rstan','brms','coda','ggmcmc','bayesplot','loo','MASS','lme4','mgcv','cplm','tables','testthat'))"
         
+RUN apt-get update && \
+    apt-get install -y --no-install-recommends \
+    pandoc-citeproc && \
+    apt upgrade --yes && \
+    apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
