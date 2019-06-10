@@ -37,6 +37,6 @@ RUN Rscript -e "install.packages(c('rjags','rstan','brms','coda','ggmcmc','bayes
         
 RUN apt-get update && \
     apt-get install -y --no-install-recommends \
-    pandoc-citeproc && \
+    pandoc-citeproc s3cmd && \
     apt upgrade --yes && \
     apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
