@@ -1,4 +1,4 @@
-FROM docker.dragonfly.co.nz/dragonfly-tidyverse-18.04:2019-09-11
+FROM docker.dragonfly.co.nz/dragonfly-tidyverse-18.04:2019-09-21
 MAINTAINER edward@dragonfly.co.nz
 
 
@@ -19,8 +19,8 @@ COPY fonts/ /usr/local/share/fonts/
 
 COPY dragonfly-latex-templates_1.16_all.deb /tmp/ 
 RUN dpkg -i /tmp/dragonfly-latex-templates_1.16_all.deb
-COPY mpi-latex-templates_1.22_all.deb /tmp/ 
-RUN dpkg -i /tmp/mpi-latex-templates_1.22_all.deb
+COPY mpi-latex-templates_1.24_all.deb /tmp/ 
+RUN dpkg -i /tmp/mpi-latex-templates_1.24_all.deb
 
 # Upgrade
 RUN apt-get update && \

@@ -1,5 +1,6 @@
 UBUNTU := 18.04
 DATE := $(shell date +%Y-%m-%d)
+#DATE := 2019-09-21
 
 REGISTRY := docker.dragonfly.co.nz
 #DOCKERS := dragonfly-base \

@@ -1,4 +1,4 @@
-FROM docker.dragonfly.co.nz/dragonfly-reports-18.04:2019-09-11
+FROM docker.dragonfly.co.nz/dragonfly-reports-18.04:2019-09-21
 MAINTAINER edward@dragonfly.co.nz
 
 RUN apt-get update && \
@@ -40,3 +40,4 @@ RUN apt-get update && \
     pandoc-citeproc s3cmd && \
     apt upgrade --yes && \
     apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
+
