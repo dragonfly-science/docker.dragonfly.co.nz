@@ -11,14 +11,13 @@ are:
     Sweave files
 4.  `dragonverse` - A fat desktop sized docker with Potsgres, GIS tools, and a range of R packages
 
-The docker files have the ubuntu version in their name,  e.g., `dragonfly-reports-17.04` and are tagged with the date 
+The docker files have the ubuntu version in their name,  e.g., `dragonfly-reports-18.04` and are tagged with the date 
 that they were pushed to the registry. To list the tags of the available images, you can visit the 
-registry URL for each repository: e.g., https://docker.dragonfly.co.nz/v2/dragonfly-reports-17.04/tags/list
-
+registry URL for each repository: e.g., https://docker.dragonfly.co.nz/v2/dragonfly-reports-18.04/tags/list
 
 To use these images in Gorbachev, put something like the following in your `gorbachev.yaml` file:
 ```
-docker: dragonfly-reports-17.04:2017-06-15
+docker: dragonfly-reports-18.04:2020-04-22
 ```
 Your project will then be built with that image every time it runs on Gorbachev.
 
@@ -54,6 +53,75 @@ dragonfly repository with:
 docker push docker.dragonfly.co.nz/NAME:TAG 
 ```
 
+# The dragonverse
 
+The latest version is docker.dragonfly.co.nz/dragonflyverse-18.04:2020-04-22
 
+This docker contains the following R packages:
+
+## Packages in dragonfly-tidyverse and dragonfly-reports
+* tidyverse
+* devtools
+* dplyr
+* ggplot2
+* data.table
+* xtable
+* rmarkdown
+* knitr
+* pander
+* kable
+* kableExtra
+
+# Talking to databases and other formats
+* foreign
+* RPostgreSQL'
+* rjson
+* dbplyr
+* data.tree
+* ape
+
+# GIS
+* shapefiles
+* maptools
+* rgeos
+* mapproj
+* rgdal
+* sf
+* rgrass7
+* raster
+* lwgeom
+
+# Plotting and utilities
+* RColorBrewer
+* viridis
+* gridExtra
+* gridSVG
+* ggrepel
+* directlabels
+* plotrix
+* cowplot
+* ggsn
+* plotmapbox
+* Rmdformats
+* here
+* furrr
+* drake
+* prettydoc
+* paletteer
+
+# Bayes & Co
+* rjags
+* rstan
+* brms
+* coda
+* ggmcmc
+* bayesplot
+* loo
+* MASS
+* lme4
+* mgcv
+* cplm
+* tables
+* testthat
+* tidybayes
 
