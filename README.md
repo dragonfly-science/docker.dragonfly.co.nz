@@ -34,6 +34,14 @@ to be executed when the docker starts. This mounts the current directory into a 
 that you write any files that you want to keep somewhere under the work directory, otherwise
 you wll lose them when the docker finishes.
 
+# Updating the docker images
+
+1. Change the date in the base image (the first line) of each Dockerfile to today's date
+2. Update the `Rprofile.site` file in the dragonfly-tidyverse Dockerfile, changing the date so that R packages are
+	from a recent version of MRAN
+3. Run `make` to build the docker images
+4. Run `make push` to push the new images to the registry
+
 # Rolling your own docker
 
 The dockerfiles are examples of how to build your own docker images.  In this case,
