@@ -72,7 +72,7 @@ This docker contains the following R packages:
 * kable
 * kableExtra
 
-# Talking to databases and other formats
+## Talking to databases and other formats
 * foreign
 * RPostgreSQL'
 * rjson
@@ -80,7 +80,7 @@ This docker contains the following R packages:
 * data.tree
 * ape
 
-# GIS
+## GIS
 * shapefiles
 * maptools
 * rgeos
@@ -91,7 +91,7 @@ This docker contains the following R packages:
 * raster
 * lwgeom
 
-# Plotting and utilities
+## Plotting and utilities
 * RColorBrewer
 * viridis
 * gridExtra
@@ -109,7 +109,7 @@ This docker contains the following R packages:
 * prettydoc
 * paletteer
 
-# Bayes & Co
+## Bayes & Co
 * rjags
 * rstan
 * brms
