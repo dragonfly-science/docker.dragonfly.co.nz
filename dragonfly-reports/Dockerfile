@@ -1,4 +1,4 @@
-FROM docker.dragonfly.co.nz/dragonfly-tidyverse-18.04:2020-01-23
+FROM docker.dragonfly.co.nz/dragonfly-tidyverse-18.04:2020-04-22
 MAINTAINER edward@dragonfly.co.nz
 
 
@@ -17,10 +17,10 @@ RUN apt-add-repository multiverse && \
 
 COPY fonts/ /usr/local/share/fonts/
 
-COPY dragonfly-latex-templates_1.20_all.deb /tmp/ 
-RUN dpkg -i /tmp/dragonfly-latex-templates_1.20_all.deb
-COPY mpi-latex-templates_1.24_all.deb /tmp/ 
-RUN dpkg -i /tmp/mpi-latex-templates_1.24_all.deb
+COPY dragonfly-latex-templates_1.22_all.deb /tmp/ 
+RUN dpkg -i /tmp/dragonfly-latex-templates_1.22_all.deb
+COPY mpi-latex-templates_1.25_all.deb /tmp/ 
+RUN dpkg -i /tmp/mpi-latex-templates_1.25_all.deb
 
 # Upgrade
 RUN apt-get update && \

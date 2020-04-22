@@ -1,4 +1,4 @@
-FROM docker.dragonfly.co.nz/dragonfly-base-18.04:2019-07-15
+FROM docker.dragonfly.co.nz/dragonfly-base-18.04:2020-04-22
 MAINTAINER edward@dragonfly.co.nz
 
 # Installing R and tidyverse packages. To update, change the date of the microsoft CRAN
@@ -19,6 +19,6 @@ RUN apt-get update && \
     apt upgrade --yes && \
     apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
-COPY Rprofile-2019-09-10.site /etc/R/Rprofile.site
+COPY Rprofile-2020-04-20.site /etc/R/Rprofile.site
 
 RUN Rscript -e "install.packages(c('devtools','dplyr','ggplot2','tidyverse'))"

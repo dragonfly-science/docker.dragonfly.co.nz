@@ -1,0 +1,12 @@
+# Set the URL for CRAN
+local({
+    r <- getOption('repos')
+    r['CRAN'] = 'https://mran.microsoft.com/snapshot/2020-04-20'
+    options(repos = r)
+})
+
+.libPaths('/usr/local/lib/R/site-library')
+
+# And use A4 paper
+options(papersize="a4") 
+
