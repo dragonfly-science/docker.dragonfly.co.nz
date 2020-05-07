@@ -1,5 +1,6 @@
 UBUNTU := 18.04
 DATE := $(shell date +%Y-%m-%d)
+GIT_TAG ?= $(shell git log --oneline | head -n1 | awk '{print $$1}')
 
 REGISTRY := docker.dragonfly.co.nz
 #DOCKERS := dragonfly-base \
@@ -40,3 +41,15 @@ $(REGISTRY)/%: %/.docker
 	docker push $(REGISTRY)/$*-$(UBUNTU):$(DATE) && \
 	docker push $(REGISTRY)/$*-$(UBUNTU):latest && \
 	echo "[$(DATE)] docker push $(REGISTRY)/$*-$(UBUNTU):$(DATE)" >> log.txt
+
+
+docker:
+	docker build -t $(REGISTRY)/docker-build:$(GIT_TAG) . && \
+	docker tag $(REGISTRY)/docker-build:$(GIT_TAG) $(REGISTRY)/docker-build:latest && \
+	docker push $(REGISTRY)/docker-build:$(GIT_TAG) && \
+	docker push $(REGISTRY)/docker-build:latest
+
+
+docker-push:
+	docker push $(IMAGE):$(GIT_TAG)
+	docker push $(IMAGE):latest

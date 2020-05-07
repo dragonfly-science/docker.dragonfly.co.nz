@@ -1,1 +1,1 @@
-docker: "ubuntu"
+docker: "docker.dragonfly.co.nz/docker-build"
