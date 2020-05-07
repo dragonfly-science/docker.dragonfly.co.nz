@@ -6,7 +6,6 @@ REGISTRY := docker.dragonfly.co.nz
 #	dragonfly-tidyverse \
 #	dragonfly-reports \
 #	dragonverse \
-#	texlive
 #
 DOCKERS := 	dragonfly-reports \
 	dragonverse 
@@ -24,7 +23,6 @@ push: $(REGISTRY_DOCKERS)
 deploy: all push
 
 dragonfly-tidyverse/.docker: dragonfly-base/.docker
-texlive/.docker: dragonfly-base/.docker
 dragonfly-reports/.docker: dragonfly-tidyverse/.docker 
 dragonverse/.docker: dragonfly-reports/.docker
 
