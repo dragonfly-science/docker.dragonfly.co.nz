@@ -132,4 +132,6 @@ This docker contains the following R packages:
 * tables
 * testthat
 * tidybayes
+* tidymodels
+* modelr
 
