@@ -63,7 +63,7 @@ docker push docker.dragonfly.co.nz/NAME:TAG
 
 # The dragonverse
 
-The latest version is docker.dragonfly.co.nz/dragonflyverse-18.04:2020-04-22
+The latest version is docker.dragonfly.co.nz/dragonflyverse-18.04:2020-06-04
 
 This docker contains the following R packages:
 
