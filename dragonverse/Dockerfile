@@ -1,4 +1,4 @@
-FROM docker.dragonfly.co.nz/dragonfly-reports-18.04:2020-04-22
+FROM docker.dragonfly.co.nz/dragonfly-reports-18.04:2020-06-04
 MAINTAINER edward@dragonfly.co.nz
 
 RUN apt-get update && \
@@ -33,7 +33,7 @@ RUN Rscript -e "install.packages(c('shapefiles','maptools','rgeos','mapproj','rg
 RUN Rscript -e "install.packages(c('RColorBrewer','viridis','gridExtra','gridSVG','ggrepel','directlabels','plotrix','cowplot','ggsn', 'plotmapbox', 'Cairo', 'Rmdformats', 'here', 'furrr', 'drake', 'prettydoc', 'paletteer'))"
 
 # Bayes & Co
-RUN Rscript -e "install.packages(c('rjags','rstan','brms','coda','ggmcmc','bayesplot','loo','MASS','lme4','mgcv','cplm','tables','testthat', 'tidybayes'))"
+RUN Rscript -e "install.packages(c('rjags','rstan','brms','coda','ggmcmc','bayesplot','loo','MASS','lme4','mgcv','cplm','tables','testthat', 'tidybayes','tidymodels'))"
         
 RUN Rscript -e "devtools::install_github('r-spatial/lwgeom')"
 
