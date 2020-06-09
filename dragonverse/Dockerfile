@@ -24,7 +24,7 @@ RUN rm -rf /tmp/*
 RUN sed -i 's/md5\|peer/trust/' /etc/postgresql/10/main/pg_hba.conf
 
 # Talking to databases and other formats
-RUN Rscript -e "install.packages(c('foreign','RPostgreSQL','rjson', 'jsonlite', 'dbplyr','data.tree','ape'))"
+RUN Rscript -e "install.packages(c('foreign','RPostgreSQL','rjson', 'jsonlite', 'dbplyr','data.tree','ape','aws.s3'))"
 				
 # GIS
 RUN Rscript -e "install.packages(c('shapefiles','maptools','rgeos','mapproj','rgdal','sf','rgrass7','raster'))"
