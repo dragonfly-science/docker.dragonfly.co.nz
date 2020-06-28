@@ -3,13 +3,9 @@ DATE := $(shell date +%Y-%m-%d)
 GIT_TAG ?= $(shell git log --oneline | head -n1 | awk '{print $$1}')
 
 REGISTRY := docker.dragonfly.co.nz
-#DOCKERS := dragonfly-base \
-#	dragonfly-tidyverse \
-#	dragonfly-reports \
-#	dragonverse \
-#
-DOCKERS := 	dragonfly-reports \
-	dragonverse 
+
+DOCKERS := dragonfly-reports \
+	   dragonverse 
 
 DOCKER_TARGETS := $(addsuffix /.docker,$(DOCKERS))
 REGISTRY_DOCKERS := $(addprefix $(REGISTRY)/,$(DOCKERS))
