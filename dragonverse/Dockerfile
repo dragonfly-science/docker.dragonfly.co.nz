@@ -37,3 +37,6 @@ RUN Rscript -e "install.packages(c('rjags','rstan','brms','coda','ggmcmc','bayes
         
 RUN Rscript -e "devtools::install_github('r-spatial/lwgeom')"
 
+# Multifan-CL R packages for work with SPC assessments
+RUN Rscript -e "devtools::install_github('flr/FLCore')"
+RUN Rscript -e "devtools::install_github('PacificCommunity/ofp-sam-flr4mfcl')"
