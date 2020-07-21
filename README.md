@@ -17,7 +17,7 @@ registry URL for each repository: e.g., https://docker.dragonfly.co.nz/v2/dragon
 
 To use these images in Gorbachev, put something like the following in your `gorbachev.yaml` file:
 ```
-docker: dragonfly-reports-18.04:2020-06-04
+docker: dragonfly-reports-18.04:2020-07-22
 ```
 Your project will then be built with that image every time it runs on Gorbachev.
 
@@ -39,8 +39,8 @@ you wll lose them when the docker finishes.
 1. Change the date in the base image (the first line) of each Dockerfile to today's date
 2. Update the `Rprofile.site` file in the dragonfly-tidyverse Dockerfile, changing the date so that R packages are
 	from a recent version of MRAN
-3. Run `make` to build the docker images
-4. Run `make push` to push the new images to the registry
+3. Change date in README.md (this file) to latest date.
+4. Dockers will build on gorbachev and get deployed to docker.dragonfly.co.nz; deployment to docker hub is manual for now.
 
 # Rolling your own docker
 

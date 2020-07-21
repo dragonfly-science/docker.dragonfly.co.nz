@@ -1,4 +1,4 @@
-FROM docker.dragonfly.co.nz/dragonfly-base-18.04:2020-06-08
+FROM docker.dragonfly.co.nz/dragonfly-base-18.04:2020-07-22
 MAINTAINER edward@dragonfly.co.nz
 
 # Installing R and tidyverse packages. To update, change the date of the microsoft CRAN
@@ -10,7 +10,7 @@ RUN apt-get update && \
     apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
 RUN apt-key adv --keyserver keyserver.ubuntu.com --recv-keys E298A3A825C0D65DFD57CBB651716619E084DAB9
-RUN echo 'deb https://cran.microsoft.com/snapshot/2020-06-03/bin/linux/ubuntu/ bionic-cran40/' >> /etc/apt/sources.list
+RUN echo 'deb https://cran.microsoft.com/snapshot/2020-07-22/bin/linux/ubuntu/ bionic-cran40/' >> /etc/apt/sources.list
 
 RUN apt-get update && \
     apt-get install -y --no-install-recommends \

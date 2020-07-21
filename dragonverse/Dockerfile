@@ -1,4 +1,4 @@
-FROM docker.dragonfly.co.nz/dragonfly-reports-18.04:2020-06-08
+FROM docker.dragonfly.co.nz/dragonfly-reports-18.04:2020-07-22
 MAINTAINER edward@dragonfly.co.nz
 
 RUN apt-get update && \
@@ -27,7 +27,7 @@ RUN sed -i 's/md5\|peer/trust/' /etc/postgresql/10/main/pg_hba.conf
 RUN Rscript -e "install.packages(c('foreign','RPostgreSQL','rjson', 'jsonlite', 'dbplyr','data.tree','ape','aws.s3'))"
 				
 # GIS
-RUN Rscript -e "install.packages(c('shapefiles','maptools','rgeos','mapproj','rgdal','sf','rgrass7','raster'))"
+RUN Rscript -e "install.packages(c('shapefiles','maptools','rgeos','mapproj','rgdal','sf','rgrass7','raster','leaflet','leafem','mapview'))"
 
 # Plotting and utils
 RUN Rscript -e "install.packages(c('RColorBrewer','viridis','gridExtra','gridSVG','ggrepel','directlabels','plotrix','cowplot','ggsn', 'plotmapbox', 'Cairo', 'Rmdformats', 'here', 'furrr', 'drake', 'prettydoc', 'paletteer'))"
