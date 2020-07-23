@@ -11,6 +11,7 @@ RUN apt-get update && \
     qgis \
     pandoc libcairo-dev \
     pandoc-citeproc s3cmd \
+    libnode-dev \
     libnlopt-dev \
     libudunits2-0 libudunits2-dev && \
     apt upgrade --yes && \
