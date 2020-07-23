@@ -1,4 +1,4 @@
-FROM docker.dragonfly.co.nz/dragonfly-reports-18.04:2020-07-24
+FROM docker.dragonfly.co.nz/dragonfly-reports-18.04:2020-07-23
 MAINTAINER edward@dragonfly.co.nz
 
 RUN apt-get update && \
