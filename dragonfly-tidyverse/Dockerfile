@@ -1,5 +1,6 @@
 FROM docker.dragonfly.co.nz/dragonfly-base-18.04:2020-07-23
 MAINTAINER edward@dragonfly.co.nz
+ENV DEBIAN_FRONTEND noninteractive
 
 # Installing R and tidyverse packages. To update, change the date of the microsoft CRAN
 # line and in the Rprofile.site file

@@ -1,5 +1,6 @@
 FROM docker.dragonfly.co.nz/dragonfly-reports-18.04:2020-08-12
 MAINTAINER edward@dragonfly.co.nz
+ENV DEBIAN_FRONTEND noninteractive
 
 RUN apt-get update && \
     apt-get install -y --no-install-recommends \
