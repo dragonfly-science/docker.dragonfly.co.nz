@@ -30,9 +30,11 @@ dragonfly-tidyverse/.docker: dragonfly-base/.docker
 dragonfly-reports/.docker: dragonfly-tidyverse/.docker 
 dragonverse/.docker: dragonfly-reports/.docker
 
+DOTDOCKERS := $(shell find . -name .docker | xargs cat)
+
 .PHONY: clean
 clean:
-	for d in `find . -name .docker | xargs cat`; do docker rmi -f $d; done
+	docker rmi -f $(DOTDOCKERS)
 	find . -name .docker* -delete
 
 %/.docker: %/Dockerfile
