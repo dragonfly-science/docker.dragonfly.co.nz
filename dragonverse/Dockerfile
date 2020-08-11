@@ -34,7 +34,7 @@ RUN Rscript -e "install.packages(c('shapefiles','maptools','rgeos','mapproj','rg
 RUN Rscript -e "install.packages(c('RColorBrewer','viridis','gridExtra','gridSVG','ggrepel','directlabels','plotrix','cowplot','ggsn', 'plotmapbox', 'Cairo', 'Rmdformats', 'here', 'furrr', 'drake', 'prettydoc', 'paletteer'))"
 
 # Bayes & Co
-RUN Rscript -e "install.packages(c('rjags','rstan','brms','coda','ggmcmc','bayesplot','loo','MASS','lme4','mgcv','cplm','tables','testthat', 'tidybayes','tidymodels'))"
+RUN Rscript -e "install.packages(c('rjags','rstan','brms','coda','ggmcmc','bayesplot','loo','MASS','lme4','mgcv','cplm','tables','testthat', 'tidybayes','tidymodels', 'inlabru'))"
         
 RUN Rscript -e "devtools::install_github('r-spatial/lwgeom')"
 
