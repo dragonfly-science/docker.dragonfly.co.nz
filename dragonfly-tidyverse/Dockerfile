@@ -1,4 +1,4 @@
-FROM docker.dragonfly.co.nz/dragonfly-base-18.04:2020-07-23
+FROM dragonfly-base
 MAINTAINER edward@dragonfly.co.nz
 ENV DEBIAN_FRONTEND noninteractive
 

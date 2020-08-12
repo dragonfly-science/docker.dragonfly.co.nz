@@ -30,34 +30,38 @@ dragonfly-tidyverse/.docker: dragonfly-base/.docker
 dragonfly-reports/.docker: dragonfly-tidyverse/.docker 
 dragonverse/.docker: dragonfly-reports/.docker
 
-DOTDOCKERS := $(shell find . -name .docker | xargs cat)
-
-.PHONY: clean
-clean:
-	docker rmi -f $(DOTDOCKERS)
-	find . -name .docker* -delete
+dragonfly-base/.docker: dragonfly-base/Dockerfile
+	docker pull ubuntu:$(UBUNTU)
+	docker build --iidfile $@ -t dragonfly-base dragonfly-base
 
 %/.docker: %/Dockerfile
-	docker build --iidfile $@ -t $*-$(UBUNTU):$(DATE) $*
+	docker build --iidfile $@ -t $* $*
 
 $(DRAGONFLY)/%: %/.docker
-	docker tag $*-$(UBUNTU):$(DATE) $(DRAGONFLY)/$*-$(UBUNTU):$(DATE) && \
+	docker tag $* $(DRAGONFLY)/$*-$(UBUNTU):$(DATE) && \
 	docker tag $(DRAGONFLY)/$*-$(UBUNTU):$(DATE) $(DRAGONFLY)/$*-$(UBUNTU):latest && \
 	docker push $(DRAGONFLY)/$*-$(UBUNTU):$(DATE) && \
 	docker push $(DRAGONFLY)/$*-$(UBUNTU):latest && \
 	echo "[$(DATE)] docker push $(DRAGONFLY)/$*-$(UBUNTU):$(DATE)" >> log.txt
 
 $(AWS)/%: %/.docker
-	docker tag $*-$(UBUNTU):$(DATE) $(AWS)/$*-$(UBUNTU):$(DATE) && \
+	docker tag $* $(AWS)/$*-$(UBUNTU):$(DATE) && \
 	docker tag $(AWS)/$*-$(UBUNTU):$(DATE) $(AWS)/$*-$(UBUNTU):latest && \
 	docker push $(AWS)/$*-$(UBUNTU):$(DATE) && \
 	docker push $(AWS)/$*-$(UBUNTU):latest
 
 $(DOCKERHUB)/%: %/.docker
-	docker tag $*-$(UBUNTU):$(DATE) $(DOCKERHUB)/$*-$(UBUNTU):$(DATE) && \
+	docker tag $* $(DOCKERHUB)/$*-$(UBUNTU):$(DATE) && \
 	docker tag $(DOCKERHUB)/$*-$(UBUNTU):$(DATE) $(DOCKERHUB)/$*-$(UBUNTU):latest && \
 	docker push $(DOCKERHUB)/$*-$(UBUNTU):$(DATE) && \
 	docker push $(DOCKERHUB)/$*-$(UBUNTU):latest
+
+DOTDOCKERS := $(shell find . -name .docker | xargs cat)
+
+.PHONY: clean
+clean:
+	docker rmi -f $(DOTDOCKERS)
+	find . -name .docker* -delete
 
 docker:
 	docker build -t $(DRAGONFLY)/docker-build:$(GIT_TAG) . && \
