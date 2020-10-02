@@ -14,7 +14,7 @@ RUN apt-get update && \
     pandoc-citeproc s3cmd \
     libv8-dev \
     libnlopt-dev \
-    libudunits2-0 libudunits2-dev && \
+    libudunits2-0 libudunits2-dev awscli && \
     apt upgrade --yes && \
     apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
@@ -24,6 +24,9 @@ RUN rm -rf /tmp/*
 
 #Postgresql setup
 RUN sed -i 's/md5\|peer/trust/' /etc/postgresql/10/main/pg_hba.conf
+
+# Newer data.table
+RUN Rscript -e "install.packages('data.table', repos = 'https://cloud.r-project.org')"
 
 # Talking to databases and other formats
 RUN Rscript -e "install.packages(c('foreign','RPostgreSQL','rjson', 'jsonlite', 'dbplyr','data.tree','ape','aws.s3'))"
