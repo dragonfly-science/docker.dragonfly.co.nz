@@ -1,4 +1,4 @@
-FROM dragonfly-reports
+FROM dragonfly-reports:latest
 MAINTAINER edward@dragonfly.co.nz
 ENV DEBIAN_FRONTEND noninteractive
 
