@@ -17,7 +17,7 @@ registry URL for each repository: e.g., https://docker.dragonfly.co.nz/v2/dragon
 
 To use these images in Gorbachev, put something like the following in your `gorbachev.yaml` file:
 ```
-docker: dragonverse-18.04:2020-07-24
+docker: dragonverse-18.04:2021-05-23
 ```
 Your project will then be built with that image every time it runs on Gorbachev.
 
