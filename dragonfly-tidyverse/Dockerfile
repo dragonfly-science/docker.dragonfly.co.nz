@@ -11,7 +11,7 @@ RUN apt-get update && \
     apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
 RUN apt-key adv --keyserver keyserver.ubuntu.com --recv-keys E298A3A825C0D65DFD57CBB651716619E084DAB9
-RUN echo 'deb https://cran.microsoft.com/snapshot/2020-07-23/bin/linux/ubuntu/ bionic-cran40/' >> /etc/apt/sources.list
+RUN echo 'deb https://cran.microsoft.com/snapshot/2021-05-23/bin/linux/ubuntu/ bionic-cran40/' >> /etc/apt/sources.list
 
 RUN apt-get update && \
     apt-get install -y --no-install-recommends \
