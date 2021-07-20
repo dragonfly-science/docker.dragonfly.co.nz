@@ -42,5 +42,7 @@ RUN Rscript -e "install.packages(c('rjags','coda','ggmcmc','bayesplot','loo','MA
         
 RUN Rscript -e "devtools::install_github('r-spatial/lwgeom')"
 
+RUN Rscript -e "install.packages('rmdformats')"
+
 COPY adjust_stan_ver.r /etc/R/adj.stan.R
 RUN Rscript /etc/R/adj.stan.R

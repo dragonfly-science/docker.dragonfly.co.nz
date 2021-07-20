@@ -5,13 +5,14 @@ ENV DEBIAN_FRONTEND noninteractive
 # Installing R and tidyverse packages. To update, change the date of the microsoft CRAN
 # line and in the Rprofile.site file
 
-RUN apt-get update && \
+
+RUN apt-get update &&  \
     apt-get install -y --no-install-recommends gnupg ca-certificates && \
     apt upgrade --yes && \
     apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
 RUN apt-key adv --keyserver keyserver.ubuntu.com --recv-keys E298A3A825C0D65DFD57CBB651716619E084DAB9
-RUN echo 'deb https://cran.microsoft.com/snapshot/2021-05-23/bin/linux/ubuntu/ bionic-cran40/' >> /etc/apt/sources.list
+RUN echo 'deb https://cran.microsoft.com/snapshot/2021-07-20/bin/linux/ubuntu/ bionic-cran40/' >> /etc/apt/sources.list
 
 RUN apt-get update && \
     apt-get install -y --no-install-recommends \
@@ -20,6 +21,6 @@ RUN apt-get update && \
     apt upgrade --yes && \
     apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
-COPY Rprofile-2021-05-23.site /etc/R/Rprofile.site
+COPY Rprofile-2021-07-20.site /etc/R/Rprofile.site
 
 RUN Rscript -e "install.packages(c('devtools','dplyr','ggplot2','tidyverse'))"
