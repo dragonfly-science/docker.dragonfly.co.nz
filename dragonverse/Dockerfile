@@ -25,9 +25,6 @@ RUN rm -rf /tmp/*
 #Postgresql setup
 RUN sed -i 's/md5\|peer/trust/' /etc/postgresql/12/main/pg_hba.conf
 
-# Newer data.table
-RUN Rscript -e "install.packages('data.table', repos = 'https://cloud.r-project.org')"
-
 # Talking to databases and other formats
 RUN Rscript -e "install.packages(c('foreign','RPostgreSQL','rjson', 'jsonlite', 'dbplyr','data.tree','ape','aws.s3'))"
 				

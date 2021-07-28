@@ -1,7 +1,7 @@
 # Set the URL for CRAN
 local({
     r <- getOption('repos')
-    r['CRAN'] = 'https://mran.microsoft.com/snapshot/2021-07-20'
+    r['CRAN'] = 'https://mran.microsoft.com/snapshot/2021-07-27'
     options(repos = r)
 })
 
