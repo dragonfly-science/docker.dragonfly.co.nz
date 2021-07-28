@@ -8,7 +8,7 @@ RUN apt-get update && \
     gdal-bin libgdal-dev libgdal-dev libproj-dev libgeos++-dev \
     grass jags \
     proj-bin proj-data \
-    postgresql-10 postgresql-10-postgis-2.4 \
+    postgresql-12 postgresql-12-postgis-3 \
     qgis \
     pandoc libcairo-dev \
     pandoc-citeproc s3cmd \
@@ -18,12 +18,12 @@ RUN apt-get update && \
     apt upgrade --yes && \
     apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
-COPY pandoc-2.9.2.1-1-amd64.deb /tmp/ 
-RUN dpkg -i /tmp/pandoc-2.9.2.1-1-amd64.deb
+COPY pandoc-2.14.1.1-amd64.deb /tmp/ 
+RUN dpkg -i /tmp/pandoc-2.14.1.1-amd64.deb
 RUN rm -rf /tmp/*
 
 #Postgresql setup
-RUN sed -i 's/md5\|peer/trust/' /etc/postgresql/10/main/pg_hba.conf
+RUN sed -i 's/md5\|peer/trust/' /etc/postgresql/12/main/pg_hba.conf
 
 # Newer data.table
 RUN Rscript -e "install.packages('data.table', repos = 'https://cloud.r-project.org')"
