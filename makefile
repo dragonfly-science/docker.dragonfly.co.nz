@@ -1,4 +1,4 @@
-UBUNTU := 18.04
+UBUNTU := 20.04
 DATE ?= $(shell date +%Y-%m-%d)
 GIT_TAG ?= $(shell git log --oneline | head -n1 | awk '{print $$1}')
 

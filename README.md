@@ -11,13 +11,13 @@ are:
     Sweave files
 4.  `dragonverse` - A fat desktop sized docker with Potsgres, GIS tools, and a range of R packages
 
-The docker files have the ubuntu version in their name,  e.g., `dragonfly-reports-18.04` and are tagged with the date 
+The docker files have the ubuntu version in their name,  e.g., `dragonfly-reports-20.04` and are tagged with the date 
 that they were pushed to the registry. To list the tags of the available images, you can visit the 
-registry URL for each repository: e.g., https://docker.dragonfly.co.nz/v2/dragonfly-reports-18.04/tags/list
+registry URL for each repository: e.g., https://docker.dragonfly.co.nz/v2/dragonfly-reports-20.04/tags/list
 
 To use these images in Gorbachev, put something like the following in your `gorbachev.yaml` file:
 ```
-docker: dragonverse-18.04:2021-05-23
+docker: dragonverse-20.04:2021-07-28
 ```
 Your project will then be built with that image every time it runs on Gorbachev.
 
