@@ -11,8 +11,8 @@ DOCKERS := dragonfly-reports \
 
 DOCKER_TARGETS := $(addsuffix /.docker,$(DOCKERS))
 DRAGONFLY_DOCKERS := $(addprefix $(DRAGONFLY)/,$(DOCKERS))
-AWS_DOCKERS := $(addprefix $(AWS)/,dragonverse)
-DOCKERHUB_DOCKERS := $(addprefix $(DOCKERHUB)/,dragonverse)
+AWS_DOCKERS := $(addprefix $(AWS)/,$(DOCKERS))
+DOCKERHUB_DOCKERS := $(addprefix $(DOCKERHUB)/,$(DOCKERS))
 
 .PHONY: all
 all: $(DOCKER_TARGETS)

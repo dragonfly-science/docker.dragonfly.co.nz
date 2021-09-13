@@ -4,7 +4,7 @@ set -e
 
 export DATE=$(date +%Y-%m-%d)
 
-make dragonfly
+#make dragonfly
 
 AWS_PROFILE=dragonfly-ecr
 AWS_REGION=us-east-1
