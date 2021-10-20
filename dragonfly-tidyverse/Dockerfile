@@ -21,6 +21,6 @@ RUN apt-get update && \
     apt upgrade --yes && \
     apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
-COPY Rprofile-2021-09-07.site /etc/R/Rprofile.site
+COPY Rprofile-2021-10-19.site /etc/R/Rprofile.site
 
 RUN Rscript -e "install.packages(c('devtools','dplyr','ggplot2','tidyverse'))"
