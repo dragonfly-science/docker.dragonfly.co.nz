@@ -32,10 +32,10 @@ RUN apt-get update && \
     apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
 # R packages
-RUN install_r data.table
-RUN install_r xtable
-RUN install_r brew
-RUN install_r rmarkdown
-RUN install_r pander
-RUN install_r kable
-RUN install_r kableExtra
+
+# Where available, install required R packages from the deb
+# packages provided by https://launchpad.net/~c2d4u.team
+RUN apt-get update && \
+    apt-get install -y r-cran-data.table r-cran-xtable r-cran-brew r-cran-rmarkdown r-cran-pander \
+    r-cran-kableextra && \
+    apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
