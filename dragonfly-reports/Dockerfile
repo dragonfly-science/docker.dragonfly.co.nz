@@ -32,4 +32,10 @@ RUN apt-get update && \
     apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
 # R packages
-RUN Rscript -e "install.packages(c('data.table','xtable', 'brew', 'rmarkdown','knitr','pander','kable', 'kableExtra'))"
+RUN install_r data.table
+RUN install_r xtable
+RUN install_r brew
+RUN install_r rmarkdown
+RUN install_r pander
+RUN install_r kable
+RUN install_r kableExtra
