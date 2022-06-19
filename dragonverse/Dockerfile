@@ -97,16 +97,20 @@ RUN apt-get update && \
     apt upgrade --yes && \
     apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
-# Not available from the launchpad apt repo:
-
+# The following are not available from the launchpad apt repo; install source packages
 RUN install_r rgrass7
 RUN install_r leaflet
 RUN install_r paletteer
 RUN install_r tidybayes
 
+# These were once in dragonverse but did not even install in dragonverse-18.04; probably unused:
 # RUN install_r plotmapbox
 # RUN install_r Rmdformats
+
+# The following rely on rgeos, which retires end of 2023
 # RUN install_r rgeos
+# RUN install_r inlabru
+
+# leafem doesn't build yet: double free or corruption (out) Aborted (core dumped)
 # RUN install_r leafem
 # RUN install_r mapview
-# RUN install_r inlabru
