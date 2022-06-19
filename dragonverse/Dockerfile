@@ -92,9 +92,14 @@ RUN apt-get update && \
 
 # Not available from the launchpad apt repo:
 
-# GIS
-RUN Rscript -e "install.packages(c('rgeos','rgrass7','leaflet','leafem','mapview'))"
-# Plotting and utils
-RUN Rscript -e "install.packages(c('plotmapbox', 'Rmdformats', 'paletteer'))"
-# Bayes & Co
-RUN Rscript -e "install.packages(c('tidybayes','inlabru'))"
+RUN install_r rgrass7
+RUN install_r leaflet
+RUN install_r paletteer
+RUN install_r tidybayes
+
+# RUN install_r plotmapbox
+# RUN install_r Rmdformats
+# RUN install_r rgeos
+# RUN install_r leafem
+# RUN install_r mapview
+# RUN install_r inlabru
