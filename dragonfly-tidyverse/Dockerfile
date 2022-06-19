@@ -26,3 +26,5 @@ RUN apt-get install -y --no-install-recommends \
         r-cran-devtools r-cran-dplyr r-cran-ggplot2 r-cran-tidyverse && \
     apt upgrade --yes && \
     apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
+
+COPY install_r /usr/local/bin
