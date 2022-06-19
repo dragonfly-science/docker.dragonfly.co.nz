@@ -37,55 +37,62 @@ RUN apt-get update && \
 # GIS
 RUN apt-get update && \
     apt-get install -y --no-install-recommends \
-    r-cran-shapefiles \
-    r-cran-maptools \
+    r-cran-geojsonsf \
+    r-cran-geometries \
+    r-cran-jsonify \
+    r-cran-lwgeom \
     r-cran-mapproj \
+    r-cran-maptools \
+    r-cran-rapidjsonr \
+    r-cran-raster \
     r-cran-rgdal \
     r-cran-sf \
-    r-cran-raster \
+    r-cran-sfheaders \
+    r-cran-shapefiles \
     r-cran-terra \
-    r-cran-lwgeom && \
+    && \
     apt upgrade --yes && \
     apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
 # Plotting and utils
 RUN apt-get update && \
     apt-get install -y --no-install-recommends \
-    r-cran-rcolorbrewer \
-    r-cran-viridis \
+    r-cran-cairo \
+    r-cran-cowplot \
+    r-cran-directlabels \
+    r-cran-drake \
+    r-cran-furrr \
+    r-cran-ggrepel \
+    r-cran-ggsn \
     r-cran-gridextra \
     r-cran-gridsvg \
-    r-cran-ggrepel \
-    r-cran-directlabels \
-    r-cran-plotrix \
-    r-cran-cowplot \
-    r-cran-ggsn \
-    r-cran-cairo \
     r-cran-here \
-    r-cran-furrr \
-    r-cran-drake \
-    r-cran-prettydoc && \
+    r-cran-plotrix \
+    r-cran-prettydoc \
+    r-cran-rcolorbrewer \
+    r-cran-viridis \
+    && \
     apt upgrade --yes && \
     apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
 # Bayes & Co
 RUN apt-get update && \
     apt-get install -y --no-install-recommends \
-    r-cran-rjags \
-    r-cran-coda \
-    r-cran-ggmcmc \
     r-cran-bayesplot \
+    r-cran-brms \
+    r-cran-coda \
+    r-cran-cplm \
+    r-cran-ggmcmc \
+    r-cran-lme4 \
     r-cran-loo \
     r-cran-mass \
-    r-cran-lme4 \
     r-cran-mgcv \
-    r-cran-cplm \
+    r-cran-rjags \
+    r-cran-rstan \
+    r-cran-stanheaders \
     r-cran-tables \
     r-cran-testthat \
     r-cran-tidymodels \
-    r-cran-stanheaders \
-    r-cran-rstan \
-    r-cran-brms \
     && \
     apt upgrade --yes && \
     apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
