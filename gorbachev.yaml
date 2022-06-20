@@ -1,1 +1,2 @@
 docker: "docker.dragonfly.co.nz/docker-build:936a648"
+requires: [ "MPI-Latex-Templates:77309" ]

@@ -3,7 +3,7 @@ MAINTAINER edward@dragonfly.co.nz
 ENV DEBIAN_FRONTEND noninteractive
 
 # Set New Zealand mirrors and set timezone to Auckland
-RUN sed -i 's/archive/nz.archive/' /etc/apt/sources.list
+# RUN sed -i 's/archive/nz.archive/' /etc/apt/sources.list
 RUN apt-get update
 RUN apt-get install -y tzdata
 RUN echo "Pacific/Auckland" > /etc/timezone
