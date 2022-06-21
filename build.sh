@@ -16,7 +16,7 @@ export DATE=$(date +%Y-%m-%d)
 #
 #make aws
 
-cp /input/MPI-Latex-Templates/mpi-latex-templates_1.42_all.deb dragonfly-reports/
+cp /input/MPI-Latex-Templates/mpi-latex-templates_1.44_all.deb dragonfly-reports/
 
 DOCKERHUB_USERNAME=deployhub1
 docker login --username ${DOCKERHUB_USERNAME} --password ${DOCKERHUB_PASSWORD}
