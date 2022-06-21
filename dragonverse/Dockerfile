@@ -6,23 +6,23 @@ RUN add-apt-repository ppa:ubuntugis/ubuntugis-unstable
 
 RUN apt-get update && \
     apt-get install -y --no-install-recommends postgresql-client \
-                                               git-core \
                                                jags \
                                                gdal-bin \
                                                libudunits2-dev \
                                                libcairo2-dev \
                                                libxt-dev \
                                                libv8-dev \
-                                               libssl-dev \
                                                libgmp3-dev \
-                                               pandoc \
                                                && \
     apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
 # Talking to databases and other formats
 RUN apt-get update && \
     apt-get install -y --no-install-recommends \
-    r-cran-foreign r-cran-rpostgresql r-cran-rjson r-cran-jsonlite r-cran-dbplyr r-cran-data.tree r-cran-ape && \
+    r-cran-rpostgresql \
+    r-cran-rjson \
+    r-cran-data.tree \
+    r-cran-ape && \
     apt upgrade --yes && \
     apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
