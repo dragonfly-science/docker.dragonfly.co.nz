@@ -39,12 +39,16 @@ RUN apt-get update && \
     r-cran-geojsonsf \
     r-cran-geometries \
     r-cran-jsonify \
+    r-cran-leafem \
+    r-cran-leaflet \
     r-cran-lwgeom \
     r-cran-mapproj \
     r-cran-maptools \
+    r-cran-mapview \
     r-cran-rapidjsonr \
     r-cran-raster \
     r-cran-rgdal \
+    r-cran-rgrass7 \
     r-cran-sf \
     r-cran-sfheaders \
     r-cran-shapefiles \
@@ -97,8 +101,6 @@ RUN apt-get update && \
     apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
 # The following are not available from the launchpad apt repo; install source packages
-RUN install_r rgrass7
-RUN install_r leaflet
 RUN install_r paletteer
 RUN install_r tidybayes
 
@@ -109,7 +111,3 @@ RUN install_r tidybayes
 # The following rely on rgeos, which retires end of 2023
 # RUN install_r rgeos
 # RUN install_r inlabru
-
-# leafem doesn't build yet: double free or corruption (out) Aborted (core dumped)
-# RUN install_r leafem
-# RUN install_r mapview
