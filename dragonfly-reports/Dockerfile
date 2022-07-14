@@ -19,8 +19,8 @@ COPY fonts/ /usr/local/share/fonts/
 
 COPY dragonfly-latex-templates_2.02_all.deb /tmp/ 
 RUN dpkg -i /tmp/dragonfly-latex-templates_2.02_all.deb
-COPY mpi-latex-templates_1.45_all.deb /tmp/
-RUN dpkg -i /tmp/mpi-latex-templates_1.45_all.deb
+COPY mpi-latex-templates_1.46_all.deb /tmp/
+RUN dpkg -i /tmp/mpi-latex-templates_1.46_all.deb
 
 # Upgrade
 RUN apt-get update && \
