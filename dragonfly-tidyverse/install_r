@@ -1,4 +1,0 @@
-#!bin/bash
-set -eu
-package=$1
-R -e "options(warn=2);install.packages(\"$package\");library($package)"
