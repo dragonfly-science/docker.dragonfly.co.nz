@@ -65,11 +65,14 @@ RUN apt-get update && \
     r-cran-directlabels \
     r-cran-drake \
     r-cran-furrr \
+    r-cran-ggpubr \
     r-cran-ggrepel \
     r-cran-ggsn \
+    r-cran-ggspatial \
     r-cran-gridextra \
     r-cran-gridsvg \
     r-cran-here \
+    r-cran-patchwork \
     r-cran-plotrix \
     r-cran-prettydoc \
     r-cran-rcolorbrewer \
