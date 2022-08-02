@@ -27,4 +27,4 @@ RUN apt-get install -y --no-install-recommends \
     apt upgrade --yes && \
     apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
-RUN echo 'function install_r { package=$1; R -e "options(warn=2);install.packages(\"$package\");library($package)"; }' >> ${HOME}/.bashrc
+COPY install_r /usr/local/bin
