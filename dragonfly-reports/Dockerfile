@@ -5,6 +5,7 @@ ENV DEBIAN_FRONTEND noninteractive
 # Latex
 RUN apt-get update && \
     apt-get install -y --no-install-recommends texlive-full biber && \
+    apt-get update && \
     apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
 RUN apt-get update && \
