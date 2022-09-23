@@ -106,6 +106,7 @@ RUN apt-get update && \
 # The following are not available from the launchpad apt repo; install source packages
 RUN install_r paletteer
 RUN install_r tidybayes
+RUN Rscript -e 'install.packages("cmdstanr", repos = c("https://mc-stan.org/r-packages/", getOption("repos"))); cmdstanr::install_cmdstan()'
 
 # These were once in dragonverse but did not even install in dragonverse-18.04; probably unused:
 # RUN install_r plotmapbox
