@@ -6,8 +6,7 @@ ENV DEBIAN_FRONTEND noninteractive
 # line and in the Rprofile.site file
 
 RUN apt-get update &&  \
-    apt-get install -y --no-install-recommends gnupg ca-certificates software-properties-common dirmngr wget \
-    curl git-core libssl-dev libssh2-1-dev libcurl4-openssl-dev libxml2-dev && \
+    apt-get install -y --no-install-recommends libssl-dev libssh2-1-dev libcurl4-openssl-dev libxml2-dev && \
     apt upgrade --yes && \
     apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 

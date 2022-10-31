@@ -14,12 +14,10 @@ RUN locale-gen en_NZ.UTF-8
 RUN dpkg-reconfigure locales
 
 RUN apt-get update && \
-    apt upgrade --yes && \
+    apt-get install --yes --no-install-recommends \
+    gnupg ca-certificates software-properties-common dirmngr wget curl git-core awscli && \
     apt-get autoremove -y && apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
 ENV LANG en_NZ.UTF-8
 ENV LANGUAGE en_NZ:en
-
-# Add a deployhub user
-RUN groupadd -g 1003 deployhub && useradd -m -g deployhub -u 1003 deployhub
 
