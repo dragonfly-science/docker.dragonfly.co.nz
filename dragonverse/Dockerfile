@@ -114,4 +114,6 @@ RUN Rscript -e 'install.packages("cmdstanr", repos = c("https://mc-stan.org/r-pa
 
 # The following rely on rgeos, which retires end of 2023
 # RUN install_r rgeos
-# RUN install_r inlabru
+RUN install_r bayestestR 
+RUN install_r performance
+RUN install_r Ternary
