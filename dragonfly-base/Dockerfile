@@ -2,7 +2,7 @@ FROM ubuntu:22.04
 MAINTAINER edward@dragonfly.co.nz
 ENV DEBIAN_FRONTEND noninteractive
 
-# RUN sed -i 's@http://archive.ubuntu.com/ubuntu/@mirror://mirrors.ubuntu.com/mirrors.txt@' /etc/apt/sources.list
+# RUN sed -i 's/archive/nz.archive/' /etc/apt/sources.list
 RUN apt-get update
 RUN apt-get install -y tzdata
 RUN echo "Pacific/Auckland" > /etc/timezone
