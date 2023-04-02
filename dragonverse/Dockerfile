@@ -117,3 +117,11 @@ RUN Rscript -e 'install.packages("cmdstanr", repos = c("https://mc-stan.org/r-pa
 RUN install_r bayestestR 
 RUN install_r performance
 RUN install_r Ternary
+
+# Additional packages, April 2, 2023
+RUN apt-get update && \
+    apt-get install -y --no-install-recommends \
+    r-cran-qs \
+    && \
+    apt upgrade --yes && \
+    apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
