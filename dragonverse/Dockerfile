@@ -64,6 +64,7 @@ RUN apt-get update && \
     r-cran-cowplot \
     r-cran-directlabels \
     r-cran-drake \
+    r-cran-egg \
     r-cran-furrr \
     r-cran-ggpubr \
     r-cran-ggrepel \
