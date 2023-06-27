@@ -121,3 +121,6 @@ RUN install_r performance
 RUN install_r Ternary
 
 RUN apt-get update && apt upgrade --yes
+
+RUN install_r qs
+
