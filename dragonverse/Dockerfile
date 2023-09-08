@@ -127,3 +127,6 @@ RUN install_r qs
 RUN wget https://github.com/quarto-dev/quarto-cli/releases/download/v1.3.433/quarto-1.3.433-linux-amd64.deb && \
 	dpkg -i quarto-1.3.433-linux-amd64.deb
 
+RUN install_r rgeos
+RUN install_r rgdal
+RUN install_r sf
