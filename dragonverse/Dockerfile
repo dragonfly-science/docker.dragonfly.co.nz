@@ -130,3 +130,6 @@ RUN wget https://github.com/quarto-dev/quarto-cli/releases/download/v1.3.433/qua
 RUN install_r rgeos
 RUN install_r rgdal
 RUN install_r sf
+
+RUN install_r flextable
+
