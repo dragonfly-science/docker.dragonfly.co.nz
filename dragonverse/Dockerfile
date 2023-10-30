@@ -114,8 +114,6 @@ RUN Rscript -e 'install.packages("cmdstanr", repos = c("https://mc-stan.org/r-pa
 # RUN install_r plotmapbox
 # RUN install_r Rmdformats
 
-# The following rely on rgeos, which retires end of 2023
-# RUN install_r rgeos
 RUN install_r bayestestR 
 RUN install_r performance
 RUN install_r Ternary
@@ -127,8 +125,6 @@ RUN install_r qs
 RUN wget https://github.com/quarto-dev/quarto-cli/releases/download/v1.3.433/quarto-1.3.433-linux-amd64.deb && \
 	dpkg -i quarto-1.3.433-linux-amd64.deb
 
-# RUN install_r rgeos
-# RUN install_r rgdal
 RUN install_r sf
 
 RUN install_r flextable
