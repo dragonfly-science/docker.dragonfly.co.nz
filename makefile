@@ -8,7 +8,8 @@ DOCKERHUB := dragonflyscience
 
 DOCKERS := dragonfly-base \
 	   dragonfly-reports \
-	   dragonverse 
+	   dragonverse \
+		dragonfly-tidyverse
 
 DOCKER_TARGETS := $(addsuffix /.docker,$(DOCKERS))
 DRAGONFLY_DOCKERS := $(addprefix $(DRAGONFLY)/,$(DOCKERS))
