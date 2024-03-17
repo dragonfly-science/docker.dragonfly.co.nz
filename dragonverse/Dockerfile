@@ -128,30 +128,3 @@ RUN wget https://github.com/quarto-dev/quarto-cli/releases/download/v1.4.549/qua
 	dpkg -i quarto-1.4.549-linux-amd64.deb
 
 
-## Install some packeges needed for the estimation project
-
-# ludicio
-RUN apt-get update && \
-    apt-get install -y python-pip && \
-    apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
-
-RUN pip2 install django
-RUN pip2 install progressbar
-
-ADD ludicio ludicio/
-RUN cd ludicio && python2 setup.py install
-
-RUN Rscript -e "install.packages(c('functional'))"
-RUN Rscript -e "install.packages(c('gplots'))"
-
-# Install the 1Password CLI (Code from here https://developer.1password.com/docs/cli/get-started/)
-RUN curl -sS https://downloads.1password.com/linux/keys/1password.asc | gpg --dearmor --output /usr/share/keyrings/1password-archive-keyring.gpg
-RUN echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/1password-archive-keyring.gpg] https://downloads.1password.com/linux/debian/$(dpkg --print-architecture) stable main" | tee /etc/apt/sources.list.d/1password.list
-RUN mkdir -p /etc/debsig/policies/AC2D62742012EA22/
-RUN curl -sS https://downloads.1password.com/linux/debian/debsig/1password.pol | tee /etc/debsig/policies/AC2D62742012EA22/1password.pol
-RUN mkdir -p /usr/share/debsig/keyrings/AC2D62742012EA22
-RUN curl -sS https://downloads.1password.com/linux/keys/1password.asc | gpg --dearmor --output /usr/share/debsig/keyrings/AC2D62742012EA22/debsig.gpg
-RUN apt update && apt install -y 1password-cli && apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
-
-# Install BRMS directly
-RUN Rscript -e 'remotes::install_github("paul-buerkner/brms")'
