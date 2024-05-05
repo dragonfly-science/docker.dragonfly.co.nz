@@ -124,6 +124,8 @@ RUN install_r qs
 RUN install_r sf
 RUN install_r flextable
 
-RUN wget https://github.com/quarto-dev/quarto-cli/releases/download/v1.4.549/quarto-1.4.549-linux-amd64.deb && \
-	dpkg -i quarto-1.4.549-linux-amd64.deb
+RUN install_r reactable
+
+RUN wget https://github.com/quarto-dev/quarto-cli/releases/download/v1.5.32/quarto-1.5.32-linux-amd64.deb && \
+	dpkg -i quarto-1.5.32-linux-amd64.deb
 
