@@ -2,8 +2,6 @@ FROM dragonfly-base
 MAINTAINER edward@dragonfly.co.nz
 ENV DEBIAN_FRONTEND noninteractive
 
-# Installing R and tidyverse packages. To update, change the date of the microsoft CRAN
-# line and in the Rprofile.site file
 
 RUN apt-get update &&  \
     apt-get install -y --no-install-recommends libssl-dev libssh2-1-dev libcurl4-openssl-dev libxml2-dev && \
