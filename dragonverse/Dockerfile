@@ -129,7 +129,7 @@ RUN install_r reactable
 RUN install_r reactable.extras
 RUN install_r sparkline
 
-RUN https://github.com/quarto-dev/quarto-cli/releases/download/v1.6.13/quarto-1.6.13-linux-amd64.deb && \
+RUN wget https://github.com/quarto-dev/quarto-cli/releases/download/v1.6.13/quarto-1.6.13-linux-amd64.deb && \
 	dpkg -i quarto-1.6.13-linux-amd64.deb
 
 
