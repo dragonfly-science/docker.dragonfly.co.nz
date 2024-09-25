@@ -122,6 +122,7 @@ RUN apt-get update && apt upgrade --yes
 
 RUN install_r qs
 RUN install_r sf
+RUN install_r systemfonts
 RUN install_r flextable
 
 RUN install_r reactable
