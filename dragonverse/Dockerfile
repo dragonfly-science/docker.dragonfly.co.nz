@@ -31,8 +31,10 @@ RUN Rscript -e "install.packages(c('aws.s3'))"
 				
 RUN apt-get update && \
     apt-get install -y --no-install-recommends \
-    libpq-dev libgdal-dev libgeos-dev libproj-dev && \
+    libgdal-dev libgeos-dev libproj-dev libtbb-dev libnetcdf-dev && \
     apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
+
+RUN R -e "install.packages(c('terra', 'leaflet', 'leafem', 'mapview', 'raster'))"
 
 # GIS
 RUN apt-get update && \
@@ -40,20 +42,15 @@ RUN apt-get update && \
     r-cran-geojsonsf \
     r-cran-geometries \
     r-cran-jsonify \
-    r-cran-leafem \
-    r-cran-leaflet \
     r-cran-lwgeom \
     r-cran-mapproj \
     r-cran-maptools \
-    r-cran-mapview \
     r-cran-rapidjsonr \
-    r-cran-raster \
     r-cran-rgdal \
     r-cran-rgrass7 \
     r-cran-sf \
     r-cran-sfheaders \
     r-cran-shapefiles \
-    r-cran-terra \
     && \
     apt upgrade --yes && \
     apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
