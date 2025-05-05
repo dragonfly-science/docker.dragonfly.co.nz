@@ -11,17 +11,17 @@ RUN apt-get update && \
 RUN apt-get update && \
     apt-get install -y software-properties-common && \
     apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
-RUN apt-add-repository multiverse && \ 
+RUN apt-add-repository multiverse && \
     apt-get update && \
     apt-get install -y msttcorefonts && \
     apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
 COPY fonts/ /usr/local/share/fonts/
 
-COPY dragonfly-latex-templates_2.03_all.deb /tmp/ 
+COPY dragonfly-latex-templates_2.03_all.deb /tmp/
 RUN dpkg -i /tmp/dragonfly-latex-templates_2.03_all.deb
-COPY mpi-latex-templates_1.61_all.deb /tmp/
-RUN dpkg -i /tmp/mpi-latex-templates_1.61_all.deb
+COPY mpi-latex-templates_1.62_all.deb /tmp/
+RUN dpkg -i /tmp/mpi-latex-templates_1.62_all.deb
 
 # Upgrade
 RUN apt-get update && \
