@@ -53,7 +53,6 @@ RUN apt-get update && \
     r-cran-sf \
     r-cran-sfheaders \
     r-cran-shapefiles \
-    r-cran-terra \
     && \
     apt upgrade --yes && \
     apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
@@ -109,6 +108,7 @@ RUN apt-get update && \
 RUN install_r paletteer
 RUN install_r tidybayes
 RUN Rscript -e 'install.packages("cmdstanr", repos = c("https://mc-stan.org/r-packages/", getOption("repos"))); cmdstanr::install_cmdstan()'
+RUN R -e "install.packages('terra', repos='https://cloud.r-project.org')"
 
 # These were once in dragonverse but did not even install in dragonverse-18.04; probably unused:
 # RUN install_r plotmapbox
