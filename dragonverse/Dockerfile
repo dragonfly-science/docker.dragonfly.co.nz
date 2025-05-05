@@ -31,7 +31,7 @@ RUN Rscript -e "install.packages(c('aws.s3'))"
 				
 RUN apt-get update && \
     apt-get install -y --no-install-recommends \
-    libpq-dev libgdal-dev libgeos-dev libproj-dev && \
+    libpq-dev libgdal-dev libgeos-dev libproj-dev libgdal32 && \
     apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
 # GIS
