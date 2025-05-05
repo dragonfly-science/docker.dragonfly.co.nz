@@ -13,7 +13,6 @@ RUN apt-get update && \
                                                libxt-dev \
                                                libv8-dev \
                                                libgmp3-dev \
-                                               libgdal32 \
                                                && \
     apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
