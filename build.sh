@@ -5,7 +5,7 @@ set -eu
 export TZ="Pacific/Auckland"
 export DATE=$(date +%Y-%m-%d)
 
-cp /input/MPI-Latex-Templates/mpi-latex-templates_1.63_all.deb dragonfly-reports/
+cp /input/MPI-Latex-Templates/mpi-latex-templates_1.64_all.deb dragonfly-reports/
 cp /input/Dragonfly-Latex-Templates/dragonfly-latex-templates_2.03_all.deb dragonfly-reports/
 
 DOCKERHUB_USERNAME=deployhub1
