@@ -1,4 +1,4 @@
-docker: "docker.dragonfly.co.nz/docker-build:936a648"
+docker: "docker.dragonfly.co.nz/docker-build:244755c"
 requires: [ "MPI-Latex-Templates:96388", "Dragonfly-Latex-Templates"]
 memory: 2
 
