@@ -17,8 +17,10 @@ RUN apt-get update && \
     apt upgrade --yes && \
     apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
-RUN add-apt-repository ppa:c2d4u.team/c2d4u4.0+
-RUN apt-get update
+RUN wget -q -O- https://eddelbuettel.github.io/r2u/assets/dirk_eddelbuettel_key.asc \
+    | tee -a /etc/apt/trusted.gpg.d/cranapt_key.asc
+RUN add-apt-repository "deb [arch=amd64] https://r2u.stat.illinois.edu/ubuntu jammy main"
+
 RUN apt-get install -y --no-install-recommends \
         r-cran-devtools r-cran-dplyr r-cran-ggplot2 r-cran-tidyverse && \
     apt upgrade --yes && \

@@ -35,7 +35,7 @@ RUN apt-get update && \
 # R packages
 
 # Where available, install required R packages from the deb
-# packages provided by https://launchpad.net/~c2d4u.team
+# packages provided by https://r2u.stat.illinois.edu
 RUN apt-get update && \
     apt-get install -y r-cran-data.table r-cran-xtable r-cran-brew r-cran-rmarkdown r-cran-pander \
     r-cran-kableextra && \
