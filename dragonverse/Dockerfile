@@ -114,7 +114,8 @@ RUN apt-get update && \
 ##  # The following are not available from the launchpad apt repo; install source packages
 RUN Rscript -e 'install.packages("cmdstanr", repos = c("https://mc-stan.org/r-packages/", getOption("repos"))); cmdstanr::install_cmdstan()'
 
-RUN wget https://github.com/quarto-dev/quarto-cli/releases/download/v1.6.13/quarto-1.6.13-linux-amd64.deb && \
-	dpkg -i quarto-1.6.13-linux-amd64.deb
+RUN wget https://github.com/quarto-dev/quarto-cli/releases/download/v1.8.17/quarto-1.8.17-linux-amd64.deb && \
+	dpkg -i quarto-1.8.17-linux-amd64.deb
+
 
 
