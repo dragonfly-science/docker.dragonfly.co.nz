@@ -117,5 +117,7 @@ RUN Rscript -e 'install.packages("cmdstanr", repos = c("https://mc-stan.org/r-pa
 RUN wget https://github.com/quarto-dev/quarto-cli/releases/download/v1.8.17/quarto-1.8.17-linux-amd64.deb && \
 	dpkg -i quarto-1.8.17-linux-amd64.deb
 
-
-
+RUN apt-get update && \
+    apt-get install -y --no-install-recommends \
+    python3-pandas \
+    && apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
