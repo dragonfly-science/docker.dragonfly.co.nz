@@ -102,7 +102,7 @@ RUN apt-get update && \
     r-cran-paletteer \
     r-cran-tidybayes \
     r-cran-rmdformats \
-    r-cran-bayestestr \
+    #r-cran-bayestestr \
     r-cran-performance \
     r-cran-ternary \
     r-cran-systemfonts \
