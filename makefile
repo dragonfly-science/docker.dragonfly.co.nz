@@ -6,7 +6,8 @@ DRAGONFLY := docker.dragonfly.co.nz
 AWS := "121565642659.dkr.ecr.us-east-1.amazonaws.com"
 DOCKERHUB := dragonflyscience
 
-DOCKERS := dragonfly-tidyverse
+DOCKERS := dragonverse
+#dragonfly-tidyverse
  #dragonfly-base \
 	#   dragonfly-reports \
 	 #  dragonverse \
