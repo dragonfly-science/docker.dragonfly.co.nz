@@ -6,11 +6,11 @@ DRAGONFLY := docker.dragonfly.co.nz
 AWS := "121565642659.dkr.ecr.us-east-1.amazonaws.com"
 DOCKERHUB := dragonflyscience
 
-DOCKERS := dragonfly-base \
-	   dragonfly-reports \
-	   dragonverse \
-		dragonfly-tidyverse
-
+DOCKERS := dragonfly-tidyverse
+ #dragonfly-base \
+	#   dragonfly-reports \
+	 #  dragonverse \
+		
 DOCKER_TARGETS := $(addsuffix /.docker,$(DOCKERS))
 DRAGONFLY_DOCKERS := $(addprefix $(DRAGONFLY)/,$(DOCKERS))
 AWS_DOCKERS := $(addprefix $(AWS)/,$(DOCKERS))
