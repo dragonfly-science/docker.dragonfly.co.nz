@@ -49,6 +49,8 @@ RUN apt-get update && \
     r-cran-sfheaders \
     r-cran-shapefiles \
     r-cran-terra \
+	r-cran-tidyterra \
+	r-cran-maptiles \
     && apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
 # Plotting and utils
