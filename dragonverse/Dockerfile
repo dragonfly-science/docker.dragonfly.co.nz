@@ -97,7 +97,7 @@ RUN apt-get update && \
     && apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
 
-RUN apt-get update && \
+RUN apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* && apt-get update && \
     apt-get install -y --no-install-recommends \
     r-cran-paletteer \
     r-cran-tidybayes \
@@ -113,7 +113,7 @@ RUN apt-get update && \
 
 
 ##  # The following are not available from the launchpad apt repo; install source packages
-#RUN Rscript -e 'install.packages("cmdstanr", repos = c("https://mc-stan.org/r-packages/", getOption("repos"))); cmdstanr::install_cmdstan()'
+RUN Rscript -e 'install.packages("cmdstanr", repos = c("https://mc-stan.org/r-packages/", getOption("repos"))); cmdstanr::install_cmdstan()'
 
 RUN wget https://github.com/quarto-dev/quarto-cli/releases/download/v1.8.17/quarto-1.8.17-linux-amd64.deb && \
 	dpkg -i quarto-1.8.17-linux-amd64.deb
