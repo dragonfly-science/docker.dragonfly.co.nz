@@ -100,9 +100,9 @@ RUN apt-get update && \
 RUN apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* && apt-get update && \
     apt-get install -y --no-install-recommends \
     r-cran-paletteer \
-#   r-cran-tidybayes \
+   r-cran-tidybayes \
     r-cran-rmdformats \
-    r-cran-performance \
+#   r-cran-performance \
     r-cran-ternary \
     r-cran-systemfonts \
     r-cran-flextable \
