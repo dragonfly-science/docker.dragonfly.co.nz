@@ -109,14 +109,15 @@ RUN apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* && apt-get up
     r-cran-reactable \
     r-cran-reactable.extras \
     r-cran-sparkline \
+    r-cran-gt \
     && apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
 
 ##  # The following are not available from the launchpad apt repo; install source packages
 RUN Rscript -e 'install.packages("cmdstanr", repos = c("https://mc-stan.org/r-packages/", getOption("repos"))); cmdstanr::install_cmdstan()'
 
-RUN wget https://github.com/quarto-dev/quarto-cli/releases/download/v1.8.17/quarto-1.8.17-linux-amd64.deb && \
-	dpkg -i quarto-1.8.17-linux-amd64.deb
+RUN wget https://github.com/quarto-dev/quarto-cli/releases/download/v1.8.26/quarto-1.8.26-linux-amd64.deb && \
+	dpkg -i quarto-1.8.26-linux-amd64.deb
 
 RUN apt-get update && \
     apt-get install -y --no-install-recommends \
