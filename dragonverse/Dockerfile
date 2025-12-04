@@ -111,6 +111,7 @@ RUN apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* && apt-get up
     r-cran-sparkline \
     r-cran-gt \
     r-cran-reticulate \
+    r-cran-tinytable \
     && apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
 
