@@ -1,7 +1,5 @@
 FROM dragonfly-base
-MAINTAINER edward@dragonfly.co.nz
-ENV DEBIAN_FRONTEND noninteractive
-
+ENV DEBIAN_FRONTEND=noninteractive
 
 RUN apt-get update &&  \
     apt-get install -y --no-install-recommends libssl-dev libssh2-1-dev libcurl4-openssl-dev libxml2-dev && \
@@ -19,7 +17,7 @@ RUN apt-get update && \
 
 RUN wget -q -O- https://eddelbuettel.github.io/r2u/assets/dirk_eddelbuettel_key.asc \
     | tee -a /etc/apt/trusted.gpg.d/cranapt_key.asc
-RUN add-apt-repository "deb [arch=amd64] https://r2u.stat.illinois.edu/ubuntu jammy main"
+RUN add-apt-repository "deb [arch=amd64] https://r2u.stat.illinois.edu/ubuntu $(lsb_release -cs) main"
 
 RUN apt-get install -y --no-install-recommends \
         r-cran-devtools r-cran-dplyr r-cran-ggplot2 r-cran-tidyverse && \

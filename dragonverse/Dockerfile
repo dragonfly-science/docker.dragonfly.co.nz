@@ -1,6 +1,5 @@
 FROM dragonfly-reports
-MAINTAINER edward@dragonfly.co.nz
-ENV DEBIAN_FRONTEND noninteractive
+ENV DEBIAN_FRONTEND=noninteractive
 
 RUN apt-get update && \
     apt-get install -y --no-install-recommends postgresql-client \
@@ -19,7 +18,7 @@ RUN apt-get update && \
     apt-get install -y --no-install-recommends \
     r-cran-rpostgresql \
     r-cran-rjson \
-    r-cran-qs \
+    # r-cran-qs \
     r-cran-data.tree \
     r-cran-ape \
     && apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
@@ -39,12 +38,12 @@ RUN apt-get update && \
     r-cran-leaflet \
     r-cran-lwgeom \
     r-cran-mapproj \
-    r-cran-maptools \
+    # r-cran-maptools \
     r-cran-mapview \
     r-cran-raster \
     r-cran-rapidjsonr \
-    r-cran-rgdal \
-    r-cran-rgrass7 \
+    # r-cran-rgdal \
+    # r-cran-rgrass7 \
     r-cran-sf \
     r-cran-sfheaders \
     r-cran-shapefiles \
@@ -56,16 +55,16 @@ RUN apt-get update && \
 # Plotting and utils
 RUN apt-get update && \
     apt-get install -y --no-install-recommends \
-    r-cran-cairo \
+    # r-cran-cairo \
     r-cran-cowplot \
-    r-cran-directlabels \
-    r-cran-drake \
+    # r-cran-directlabels \
+    # r-cran-drake \
     r-cran-egg \
-    r-cran-furrr \
-    r-cran-ggpubr \
+    # r-cran-furrr \
+    # r-cran-ggpubr \
     r-cran-ggrepel \
-    r-cran-ggsn \
-    r-cran-ggspatial \
+    # r-cran-ggsn \
+    # r-cran-ggspatial \
     r-cran-gridextra \
     r-cran-gridsvg \
     r-cran-here \
@@ -114,9 +113,8 @@ RUN apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* && apt-get up
     r-cran-tinytable \
     && apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
-
 ##  # The following are not available from the launchpad apt repo; install source packages
-RUN Rscript -e 'install.packages("cmdstanr", repos = c("https://mc-stan.org/r-packages/", getOption("repos"))); cmdstanr::install_cmdstan()'
+RUN Rscript -e 'options(warn=2);install.packages("cmdstanr", repos = c("https://mc-stan.org/r-packages/", getOption("repos"))); cmdstanr::install_cmdstan()'
 
 RUN wget https://github.com/quarto-dev/quarto-cli/releases/download/v1.8.26/quarto-1.8.26-linux-amd64.deb && \
 	dpkg -i quarto-1.8.26-linux-amd64.deb

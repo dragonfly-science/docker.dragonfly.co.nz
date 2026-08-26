@@ -1,6 +1,5 @@
-FROM ubuntu:22.04
-MAINTAINER edward@dragonfly.co.nz
-ENV DEBIAN_FRONTEND noninteractive
+FROM ubuntu:26.04
+ENV DEBIAN_FRONTEND=noninteractive
 
 # RUN sed -i 's/archive/nz.archive/' /etc/apt/sources.list
 RUN apt-get update
@@ -15,9 +14,9 @@ RUN dpkg-reconfigure locales
 
 RUN apt-get update && \
     apt-get install --yes --no-install-recommends \
-    gnupg ca-certificates software-properties-common dirmngr wget curl git-core awscli && \
+    gnupg ca-certificates software-properties-common dirmngr wget curl git-core awscli python3-requests && \
     apt-get autoremove -y && apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
-ENV LANG en_NZ.UTF-8
-ENV LANGUAGE en_NZ:en
+ENV LANG=en_NZ.UTF-8
+ENV LANGUAGE=en_NZ:en
 

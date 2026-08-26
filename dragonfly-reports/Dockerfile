@@ -1,6 +1,5 @@
 FROM dragonfly-tidyverse
-MAINTAINER edward@dragonfly.co.nz
-ENV DEBIAN_FRONTEND noninteractive
+ENV DEBIAN_FRONTEND=noninteractive
 
 # Latex
 RUN apt-get update && \
