@@ -1,4 +1,4 @@
-UBUNTU := 22.04
+UBUNTU := $(shell grep "^FROM " dragonfly-base/Dockerfile | cut -f 2 -d':')
 DATE ?= $(shell date +%Y-%m-%d)
 GIT_TAG ?= $(shell git log --oneline | head -n1 | awk '{print $$1}')
 
