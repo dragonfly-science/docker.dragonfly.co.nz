@@ -1,4 +1,4 @@
-UBUNTU := 22.04
+UBUNTU := 26.04
 DATE ?= $(shell date +%Y-%m-%d)
 GIT_TAG ?= $(shell git log --oneline | head -n1 | awk '{print $$1}')
 
@@ -31,7 +31,17 @@ dockerhub: $(DOCKERHUB_DOCKERS)
 
 dragonfly-tidyverse/.docker: dragonfly-base/.docker
 dragonfly-reports/.docker: dragonfly-tidyverse/.docker 
-dragonverse/.docker: dragonfly-reports/.docker
+# The Typst layer of dragonverse copies the Dragonfly Typst packages and fonts from sibling checkouts
+# (set TYPST_SRC if they live elsewhere). Gorbachev CI does not have these, so build locally.
+TYPST_SRC ?= $(abspath ..)
+dragonverse/typst-context: $(TYPST_SRC)/dragonfly-reports/typst $(TYPST_SRC)/distiller
+	rm -rf $@ && mkdir -p $@/fonts
+	cp -r $(TYPST_SRC)/dragonfly-reports/typst $@/dragonfly-report
+	cp -r $(TYPST_SRC)/distiller $@/distiller
+	cp $(TYPST_SRC)/dragonfly-reports/fonts/*.otf $@/fonts/
+	rm -rf $@/dragonfly-report/.git $@/distiller/.git
+
+dragonverse/.docker: dragonfly-reports/.docker dragonverse/typst-context
 
 dragonfly-base/.docker: dragonfly-base/Dockerfile
 	docker pull ubuntu:$(UBUNTU)

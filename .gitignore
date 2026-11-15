@@ -2,3 +2,4 @@ log.txt
 *.swp
 *~
 .docker*
+dragonverse/typst-context

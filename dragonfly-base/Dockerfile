@@ -1,4 +1,4 @@
-FROM ubuntu:22.04
+FROM ubuntu:26.04
 MAINTAINER edward@dragonfly.co.nz
 ENV DEBIAN_FRONTEND noninteractive
 
@@ -15,7 +15,7 @@ RUN dpkg-reconfigure locales
 
 RUN apt-get update && \
     apt-get install --yes --no-install-recommends \
-    gnupg ca-certificates software-properties-common dirmngr wget curl git-core awscli && \
+    gnupg ca-certificates software-properties-common dirmngr wget curl git awscli && \
     apt-get autoremove -y && apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
 ENV LANG en_NZ.UTF-8

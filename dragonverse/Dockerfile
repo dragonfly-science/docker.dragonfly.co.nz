@@ -9,7 +9,6 @@ RUN apt-get update && \
                                                libudunits2-dev \
                                                libcairo2-dev \
                                                libxt-dev \
-                                               libv8-dev \
                                                libgmp3-dev \
                                                && \
     apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
@@ -39,12 +38,9 @@ RUN apt-get update && \
     r-cran-leaflet \
     r-cran-lwgeom \
     r-cran-mapproj \
-    r-cran-maptools \
     r-cran-mapview \
     r-cran-raster \
     r-cran-rapidjsonr \
-    r-cran-rgdal \
-    r-cran-rgrass7 \
     r-cran-sf \
     r-cran-sfheaders \
     r-cran-shapefiles \
@@ -59,12 +55,10 @@ RUN apt-get update && \
     r-cran-cairo \
     r-cran-cowplot \
     r-cran-directlabels \
-    r-cran-drake \
     r-cran-egg \
     r-cran-furrr \
     r-cran-ggpubr \
     r-cran-ggrepel \
-    r-cran-ggsn \
     r-cran-ggspatial \
     r-cran-gridextra \
     r-cran-gridsvg \
@@ -125,3 +119,30 @@ RUN apt-get update && \
     apt-get install -y --no-install-recommends \
     python3-pandas python3-numpy python3-matplotlib \
     && apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
+
+# Typst, for building Dragonfly reports (@local/dragonfly-report and @local/distiller).
+# The packages and IBM Plex fonts are copied from typst-context/, which `make` fills from the
+# sibling checkouts (see the makefile). Typst reads @local packages from TYPST_PACKAGE_PATH and
+# keeps downloaded @preview packages in TYPST_PACKAGE_CACHE_PATH (writable by any user).
+ARG TYPST_VERSION=0.15.1
+RUN apt-get update && \
+    apt-get install -y --no-install-recommends xz-utils fontconfig && \
+    wget -qO /tmp/typst.tar.xz \
+      https://github.com/typst/typst/releases/download/v${TYPST_VERSION}/typst-x86_64-unknown-linux-musl.tar.xz && \
+    tar xf /tmp/typst.tar.xz --strip-components=1 -C /usr/local/bin typst-x86_64-unknown-linux-musl/typst && \
+    rm /tmp/typst.tar.xz && \
+    apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
+
+ENV TYPST_PACKAGE_PATH=/usr/local/share/typst/packages \
+    TYPST_PACKAGE_CACHE_PATH=/usr/local/share/typst/cache
+COPY typst-context/fonts/*.otf /usr/local/share/fonts/IBMPlex/
+COPY typst-context/dragonfly-report/ /usr/local/share/typst/packages/local/dragonfly-report/0.1.0/
+COPY typst-context/distiller/ /usr/local/share/typst/packages/local/distiller/0.1.0/
+RUN fc-cache -f /usr/local/share/fonts/IBMPlex && \
+    mkdir -p ${TYPST_PACKAGE_CACHE_PATH} && chmod 1777 ${TYPST_PACKAGE_CACHE_PATH}
+
+# Check that Typst and the Dragonfly template compile, and pre-fetch the @preview packages that
+# the template imports into the cache.
+RUN printf '#import "@local/dragonfly-report:0.1.0": *\n#import "@local/distiller:0.1.0": *\nHello\n' > /tmp/t.typ && \
+    typst compile --root /tmp /tmp/t.typ /tmp/t.pdf && rm /tmp/t.typ /tmp/t.pdf && \
+    chmod -R a+rwX ${TYPST_PACKAGE_CACHE_PATH}
